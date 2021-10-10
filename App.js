@@ -16,7 +16,7 @@ import NextFoodScreen from "./src/components/home/NextFoodScreen";
 import CameraScreen from "./src/components/home/CameraScreen";
 import HistoryScreen from "./src/components/home/HistoryScreen";
 import API from "./src/api/API";
-
+//EDIT
 
 function HomeScreen() {
     return (
