@@ -15,7 +15,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import NextFoodScreen from "./src/components/home/NextFoodScreen";
 import CameraScreen from "./src/components/home/CameraScreen";
 import HistoryScreen from "./src/components/home/HistoryScreen";
-
+//Commit By Hyeok Jun
 
 function HomeScreen() {
     return (
@@ -40,7 +40,7 @@ export default function App() {
     const NextFoodScreenName = '식단 추천';
     const CameraScreenName = '식단 촬영';
     const HistoryScreenName = '나의 기록';
-    
+
     return (
         <NavigationContainer>
             <Tab.Navigator
