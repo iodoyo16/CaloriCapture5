@@ -43,6 +43,7 @@ export default function App() {
     const HistoryScreenName = '나의 기록';
 
     React.useEffect(()=>{
+        // DLEP
         (async ()=>{
             const response = await API.auth.isLogin();
             alert(response);
