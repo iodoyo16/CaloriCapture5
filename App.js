@@ -44,6 +44,7 @@ export default function App() {
 
     React.useEffect(()=>{
         // DLEP
+        // 추가 주석띠
         (async ()=>{
             const response = await API.auth.isLogin();
             alert(response);
