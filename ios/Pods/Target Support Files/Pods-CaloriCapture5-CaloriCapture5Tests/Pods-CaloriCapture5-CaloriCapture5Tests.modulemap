@@ -1,0 +1,6 @@
+module Pods_CaloriCapture5_CaloriCapture5Tests {
+  umbrella header "Pods-CaloriCapture5-CaloriCapture5Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
