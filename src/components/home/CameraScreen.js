@@ -42,12 +42,12 @@ export default function CameraScreen({route, naviation}) {
             }
     };
 
-    return <View>
-        <View style={styles.container}>
+    return <View style={styles.container}>
             <RNCamera
                 ref={ref => {
                     this.camera = ref;
                 }}
+                captureAudio={false}
                 style={styles.preview}
                 type={RNCamera.Constants.Type.back}
                 flashMode={RNCamera.Constants.FlashMode.on}
@@ -73,6 +73,5 @@ export default function CameraScreen({route, naviation}) {
                 </TouchableOpacity>
             </View>
         </View>
-    </View>
 
 }
