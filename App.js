@@ -16,6 +16,7 @@ import NextFoodScreen from "./src/components/home/NextFoodScreen";
 import CameraScreen from "./src/components/home/CameraScreen";
 import HistoryScreen from "./src/components/home/HistoryScreen";
 import API from "./src/api/API";
+import LoginScreen from "./src/components/member/LoginScreen";
 //EDIT
 
 function HomeScreen() {
@@ -38,52 +39,65 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
 
+    const [mainScreen, setMainScreen] = React.useState(null);
+
     const NextFoodScreenName = '식단 추천';
     const CameraScreenName = '식단 촬영';
     const HistoryScreenName = '나의 기록';
 
+    const isLoggedIn = async () => {
+        return await API.auth.isLogin();
+    };
+
+    const routeScreen = async () => {
+        let loggedIn = await isLoggedIn();
+        if (loggedIn){
+            const screen = <NavigationContainer>
+                <Tab.Navigator
+                    screenOptions={({ route }) => ({
+                        tabBarIcon: ({ focused, color, size }) => {
+                            let iconName;
+                            if (route.name === NextFoodScreenName) {
+                                iconName = focused
+                                    ? 'ios-information-circle'
+                                    : 'ios-information-circle-outline';
+                            }
+                            if (route.name === CameraScreenName) {
+                                iconName = focused
+                                    ? 'ios-camera'
+                                    : 'ios-camera-outline';
+                            }
+                            if (route.name === HistoryScreenName) {
+                                iconName = focused
+                                    ? 'ios-list'
+                                    : 'ios-list-outline';
+                            }
+
+                            // You can return any component that you like here!
+                            return <Ionicons name={iconName} size={size} color={color} />;
+                        },
+                        tabBarActiveTintColor: 'tomato',
+                        tabBarInactiveTintColor: 'gray',
+                    })}
+                >
+                    <Tab.Screen name={NextFoodScreenName} component={NextFoodScreen} />
+                    <Tab.Screen name={CameraScreenName} component={CameraScreen} />
+                    <Tab.Screen name={HistoryScreenName} component={HistoryScreen} />
+                </Tab.Navigator>
+            </NavigationContainer>;
+            setMainScreen(screen);
+        }else{
+            const screen = <LoginScreen/>;
+            setMainScreen(screen);
+        }
+    };
+
     React.useEffect(()=>{
-        // DLEP
         // 추가 주석띠
         (async ()=>{
-            const response = await API.auth.isLogin();
-            alert(response);
+            await routeScreen();
         })();
-    }, []);
+    }, [mainScreen]);
 
-    return (
-        <NavigationContainer>
-            <Tab.Navigator
-                screenOptions={({ route }) => ({
-                    tabBarIcon: ({ focused, color, size }) => {
-                        let iconName;
-                        if (route.name === NextFoodScreenName) {
-                            iconName = focused
-                                ? 'ios-information-circle'
-                                : 'ios-information-circle-outline';
-                        }
-                        if (route.name === CameraScreenName) {
-                            iconName = focused
-                                ? 'ios-camera'
-                                : 'ios-camera-outline';
-                        }
-                        if (route.name === HistoryScreenName) {
-                            iconName = focused
-                                ? 'ios-list'
-                                : 'ios-list-outline';
-                        }
-
-                        // You can return any component that you like here!
-                        return <Ionicons name={iconName} size={size} color={color} />;
-                    },
-                    tabBarActiveTintColor: 'tomato',
-                    tabBarInactiveTintColor: 'gray',
-                })}
-            >
-                <Tab.Screen name={NextFoodScreenName} component={NextFoodScreen} />
-                <Tab.Screen name={CameraScreenName} component={CameraScreen} />
-                <Tab.Screen name={HistoryScreenName} component={HistoryScreen} />
-            </Tab.Navigator>
-        </NavigationContainer>
-    );
+    return mainScreen;
 }
