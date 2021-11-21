@@ -48,8 +48,6 @@ export default function App() {
     const CameraScreenName = ScreenNames.CameraScreenName;
     const HistoryScreenName = ScreenNames.HistoryScreenName;
 
-    const Stack =  createNativeStackNavigator();
-
     const isLoggedIn = async () => {
         return await API.auth.isLogin();
     };

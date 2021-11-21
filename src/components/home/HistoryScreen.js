@@ -21,6 +21,7 @@ export default function HistoryScreen({route, naviation}) {
 
     }, [loggedIn]);
 
+    //TODO
     return <View>
         <Text>History! count </Text>
         <Button title={'로그아웃 (테스트용)'}

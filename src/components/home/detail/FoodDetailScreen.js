@@ -6,6 +6,7 @@ import {SafeAreaView, Text, View} from "react-native";
 
 export default function FoodDetailScreen({route, navigation}){
 
+    // TODO
     return <SafeAreaView>
         <View>
             <Text>
