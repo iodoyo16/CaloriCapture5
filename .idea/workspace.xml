@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/CaloriCapture5.xcworkspace/xcuserdata/changhwankim.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/ios/CaloriCapture5.xcworkspace/xcuserdata/changhwankim.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/HistoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/HistoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/NextFoodScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/NextFoodScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/detail/FoodDetailScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/detail/FoodDetailScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/CameraScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/CameraScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +134,7 @@
       </method>
     </configuration>
     <configuration name="iOS" type="ReactNative" factoryName="React Native">
-      <node-interpreter value="/usr/local/Cellar/node/15.9.0/bin/node" />
+      <node-interpreter value="/usr/local/bin/node" />
       <react-native value="$PROJECT_DIR$/node_modules/react-native" />
       <platform value="IOS" />
       <envs />
@@ -185,6 +181,7 @@
       <workItem from="1636261173212" duration="2201000" />
       <workItem from="1636266224307" duration="486000" />
       <workItem from="1637495796445" duration="5634000" />
+      <workItem from="1637503562688" duration="392000" />
     </task>
     <servers />
   </component>
