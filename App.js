@@ -17,6 +17,9 @@ import CameraScreen from "./src/components/home/CameraScreen";
 import HistoryScreen from "./src/components/home/HistoryScreen";
 import API from "./src/api/API";
 import LoginScreen from "./src/components/member/LoginScreen";
+import ScreenNames from "./src/components/ScreenNames";
+import FoodDetailScreen from "./src/components/home/detail/FoodDetailScreen";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //EDIT
 
 function HomeScreen() {
@@ -41,9 +44,11 @@ export default function App() {
 
     const [mainScreen, setMainScreen] = React.useState(null);
 
-    const NextFoodScreenName = '식단 추천';
-    const CameraScreenName = '식단 촬영';
-    const HistoryScreenName = '나의 기록';
+    const NextFoodScreenName = ScreenNames.NextFoodScreenName;
+    const CameraScreenName = ScreenNames.CameraScreenName;
+    const HistoryScreenName = ScreenNames.HistoryScreenName;
+
+    const Stack =  createNativeStackNavigator();
 
     const isLoggedIn = async () => {
         return await API.auth.isLogin();
@@ -83,7 +88,9 @@ export default function App() {
                     <Tab.Screen name={NextFoodScreenName} component={NextFoodScreen} />
                     <Tab.Screen name={CameraScreenName} component={CameraScreen} />
                     <Tab.Screen name={HistoryScreenName} component={HistoryScreen} />
+
                 </Tab.Navigator>
+
             </NavigationContainer>;
             setMainScreen(screen);
         }else{

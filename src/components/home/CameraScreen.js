@@ -8,7 +8,10 @@ import {
 import { RNCamera } from 'react-native-camera';
 import API from "../../api/API";
 import Config from "../../api/Config";
+import ScreenNames from "../ScreenNames";
 
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import FoodDetailScreen from "./detail/FoodDetailScreen";
 
 
 const styles = StyleSheet.create({
@@ -34,7 +37,7 @@ const styles = StyleSheet.create({
 });
 
 
-export default function CameraScreen({route, naviation}) {
+function CameraScreenHome({route, navigation}) {
 
     const getFoodInfos = async (base64) => {
         const response = await API.logic.runFunction('food_detection', {
@@ -51,7 +54,11 @@ export default function CameraScreen({route, naviation}) {
             const base64 = data.base64;
             const foods = await getFoodInfos(base64);
             console.log(foods);
-            alert(JSON.stringify(foods));
+            navigation.navigate('FoodDetailScreen', {
+                foods: foods,
+                otherParam: 'anything you want here',
+            });
+
         }
     };
 
@@ -86,5 +93,18 @@ export default function CameraScreen({route, naviation}) {
                 </TouchableOpacity>
             </View>
         </View>
+
+}
+
+
+
+export default function CameraScreen({route, navigation}) {
+
+    const Stack = createNativeStackNavigator();
+
+    return <Stack.Navigator>
+        <Stack.Screen name={'CameraScreenHome'} component={CameraScreenHome}/>
+        <Stack.Screen name={'FoodDetailScreen'} component={FoodDetailScreen}/>
+    </Stack.Navigator>
 
 }
