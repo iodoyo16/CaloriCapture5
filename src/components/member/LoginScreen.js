@@ -13,12 +13,165 @@ export default function LoginScreen({route, navigation}) {
     const [email, setEmail] = React.useState(null);
     const [password, setPassword] = React.useState(null);
 
-    const styles = StyleSheet.create({
+    const styles = StyleSheet.create({ //Screen View Components - JUN
         input: {
             height: 40,
             margin: 12,
             borderWidth: 1,
             padding: 10,
+        },
+        LoginPage: {
+            position: 'relative',
+            width: 414,
+            height: 896,
+            backgroundColor: '#ffffff',
+        },
+        Group1: {
+            position: 'absolute',
+            left: 60,
+            top: 563,
+            width: 300,
+            height: 35,
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
+        },
+        Rectangle2: {
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: 300,
+            height: 35,
+            backgroundColor: '#d2d0fc',
+            borderRadius: 5,
+        },
+        Password: {
+            position: 'absolute',
+            left: 9,
+            top: 11,
+            width: 101,
+            height: 20,
+            color: 'rgba(0, 0, 0, 0.8)',
+            fontFamily: 'Roboto, sans-serif',
+            fontSize: 12,
+            lineHeight: 14.0625,
+        },
+        Group3: {
+            position: 'absolute',
+            left: 60,
+            top: 627,
+            width: 300,
+            height: 35,
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
+        },
+        Rectangle3: {
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: 300,
+            height: 35,
+            backgroundColor: '#5b53ff',
+            borderRadius: 5,
+        },
+        Login: {
+            position: 'absolute',
+            left: 100,
+            top: 7,
+            width: 101,
+            height: 20,
+            color: '#ffffff',
+            fontFamily: 'Roboto, sans-serif',
+            fontSize: 12,
+            fontWeight: '700',
+            lineHeight: 14.0625,
+            textAlign: 'center',
+            textAlignVertical: 'center',
+        },
+        Group2: {
+            position: 'absolute',
+            left: 60,
+            top: 499,
+            width: 300,
+            height: 35,
+        },
+        Rectangle1: {
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: 300,
+            height: 35,
+            backgroundColor: '#d2d0fc',
+            borderRadius: 5,
+        },
+        LoginID: {
+            position: 'absolute',
+            left: 9,
+            top: 11,
+            width: 101,
+            height: 20,
+            color: '#000000',
+            fontFamily: 'Roboto, sans-serif',
+            fontSize: 12,
+            lineHeight: 14.0625,
+        },
+        RegisterNewAccount: {
+            position: 'absolute',
+            left: 138,
+            top: 698,
+            width: 138,
+            height: 17,
+            color: '#b18acf',
+            fontFamily: 'Roboto, sans-serif',
+            fontSize: 12,
+            textDecorationLine: 'underline',
+            lineHeight: 14.0625,
+            textAlign: 'center',
+        },
+        ForgotLoginID: {
+            position: 'absolute',
+            left: 163,
+            top: 731,
+            width: 88,
+            height: 21,
+            color: '#b18acf',
+            fontFamily: 'Roboto, sans-serif',
+            fontSize: 12,
+            textDecorationLine: 'underline',
+            lineHeight: 14.0625,
+            textAlign: 'center',
+        },
+        ForgotPassword: {
+            position: 'absolute',
+            left: 155,
+            top: 768,
+            width: 110,
+            height: 20,
+            color: '#b18acf',
+            fontFamily: 'Roboto, sans-serif',
+            fontSize: 12,
+            textDecorationLine: 'underline',
+            lineHeight: 14.0625,
+            textAlign: 'center',
+        },
+        CalorieCapture: {
+            //position: 'absolute',
+            width: '100%',
+            height: 70,
+            paddingTop: 5,
+            paddingBottom: 5,
+            //left: 42,
+            //top: 291,
+            //width: 337,
+            //height: 74,
+            color: '#5048e5',
+            fontFamily: 'Roboto, sans-serif',
+            fontSize: 48,
+            fontWeight: '900',
+            fontStyle: 'italic',
+            lineHeight: 56.25,
+            textAlign: 'center',
         },
     });
 
@@ -44,10 +197,11 @@ export default function LoginScreen({route, navigation}) {
 
     // 아래 View 내부에 로그인 페이지를 구현하세요 TODO
     return <SafeAreaView>
-                <View>
-                    <Text> LOGIN! </Text>
-                </View>
-                <View>
+                <View style = {styles.LoginPage}>
+                    {/*<Text> LOGIN! </Text>*/}
+                    <Text style={styles.CalorieCapture}>
+                        Calorie Capture
+                    </Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={(value)=>{
@@ -72,7 +226,56 @@ export default function LoginScreen({route, navigation}) {
                             tryLogin(email, password);
                         }}
                     />
+                    <Text style={styles.RegisterNewAccount}>
+                        Register New Account
+                    </Text>
+                    <Text style={styles.ForgotLoginID}>
+                        Forgot Login ID?
+                    </Text>
+                    <Text style={styles.ForgotPassword}>
+                        Forgot Password?
+                    </Text>
+
                 </View>
+
+        {/*
+        <View style={LoginPageStyles.LoginPage}>
+            <View style={LoginPageStyles.Group1}>
+                <View style={LoginPageStyles.Rectangle2} />
+                <Text style={LoginPageStyles.Password}>
+                    Password
+                </Text>
+            </View>
+            <View style={LoginPageStyles.Group3}>
+                <View style={LoginPageStyles.Rectangle2} />
+                <Text style={LoginPageStyles.Login}>
+                    Login
+                </Text>
+            </View>
+            <View style={LoginPageStyles.Group2}>
+                <View style={LoginPageStyles.Rectangle1} />
+                <Text style={LoginPageStyles.LoginID}>
+                    Login ID
+                </Text>
+            </View>
+            <Text style={LoginPageStyles.RegisterNewAccount}>
+                Register New Account
+            </Text>
+            <Text style={LoginPageStyles.ForgotLoginID}>
+                Forgot Login ID?
+            </Text>
+            <Text style={LoginPageStyles.ForgotPassword}>
+                Forgot Password?
+            </Text>
+            <Text style={LoginPageStyles.CalorieCapture}>
+                Calorie Capture
+            </Text>
+        </View>
+
+        */}
             </SafeAreaView>
 
 }
+
+
+
