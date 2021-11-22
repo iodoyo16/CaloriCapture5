@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
@@ -8,6 +9,10 @@
       <change beforePath="$PROJECT_DIR$/src/components/home/HistoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/HistoryScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/home/NextFoodScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/NextFoodScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/home/detail/FoodDetailScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/detail/FoodDetailScreen.js" afterDir="false" />
+=======
+    <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="LoginPageDone">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +29,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< Updated upstream
+=======
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="hyeokjun97" />
+        <option name="repository" value="CaloriCapture5" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="f51b8937-349b-4789-ad38-8f585d663614" />
+        <option name="url" value="https://github.com/hyeokjun97/CaloriCapture5.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+>>>>>>> Stashed changes
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -185,7 +215,34 @@
       <workItem from="1636261173212" duration="2201000" />
       <workItem from="1636266224307" duration="486000" />
       <workItem from="1637495796445" duration="5634000" />
+<<<<<<< Updated upstream
     </task>
+=======
+      <workItem from="1637503562688" duration="14392000" />
+    </task>
+    <task id="LOCAL-00001" summary="출첵">
+      <created>1637542270185</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637542270185</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Working on LoginView_1">
+      <created>1637543634856</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1637543634856</updated>
+    </task>
+    <task id="LOCAL-00003" summary="LoginPageDone">
+      <created>1637565441620</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1637565441620</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+>>>>>>> Stashed changes
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -218,6 +275,38 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< Updated upstream
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Jun_1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="출첵" />
+    <MESSAGE value="Working on LoginView_1" />
+    <MESSAGE value="LoginPageDone" />
+    <option name="LAST_COMMIT_MESSAGE" value="LoginPageDone" />
+  </component>
+>>>>>>> Stashed changes
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/components/main/Entry.js" />
     <entry file="file://$PROJECT_DIR$/src/components/home/NextFoodScreen.js">
