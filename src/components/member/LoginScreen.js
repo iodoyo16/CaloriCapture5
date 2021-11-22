@@ -156,22 +156,21 @@ export default function LoginScreen({route, navigation}) {
             textAlign: 'center',
         },
         CalorieCapture: {
-            //position: 'absolute',
+
             width: '100%',
-            height: 70,
-            paddingTop: 5,
-            paddingBottom: 5,
-            //left: 42,
-            //top: 291,
-            //width: 337,
-            //height: 74,
-            color: '#5048e5',
-            fontFamily: 'Roboto, sans-serif',
+
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+
+
+
+            //fontFamily: 'Roboto, sans-serif',
             fontSize: 48,
             fontWeight: '900',
             fontStyle: 'italic',
-            lineHeight: 56.25,
-            textAlign: 'center',
+            color: '#5048e5',
+
         },
     });
 
