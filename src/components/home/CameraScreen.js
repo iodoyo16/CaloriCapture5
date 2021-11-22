@@ -9,7 +9,7 @@ import { RNCamera } from 'react-native-camera';
 import API from "../../api/API";
 import Config from "../../api/Config";
 import ScreenNames from "../ScreenNames";
-
+//HERE
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FoodDetailScreen from "./detail/FoodDetailScreen";
 

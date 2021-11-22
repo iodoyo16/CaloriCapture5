@@ -249,6 +249,14 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+<<<<<<< HEAD
+=======
+		<key>react-native-camera.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+>>>>>>> Jun_1
 		<key>react-native-safe-area-context.xcscheme</key>
 		<dict>
 			<key>isShown</key>
