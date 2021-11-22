@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="출첵">
+    <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="Working on LoginView_1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/member/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/member/LoginScreen.js" afterDir="false" />
     </list>
@@ -22,6 +22,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -186,7 +194,7 @@
       <workItem from="1636261173212" duration="2201000" />
       <workItem from="1636266224307" duration="486000" />
       <workItem from="1637495796445" duration="5634000" />
-      <workItem from="1637503562688" duration="4154000" />
+      <workItem from="1637503562688" duration="13267000" />
     </task>
     <task id="LOCAL-00001" summary="출첵">
       <created>1637542270185</created>
@@ -195,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637542270185</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Working on LoginView_1">
+      <created>1637543634856</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1637543634856</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -233,7 +248,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Jun_1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -241,7 +268,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="출첵" />
-    <option name="LAST_COMMIT_MESSAGE" value="출첵" />
+    <MESSAGE value="Working on LoginView_1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on LoginView_1" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/components/main/Entry.js" />
