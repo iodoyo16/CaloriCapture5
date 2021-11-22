@@ -14,18 +14,38 @@ export default function LoginScreen({route, navigation}) {
     const [password, setPassword] = React.useState(null);
 
     const styles = StyleSheet.create({ //Screen View Components - JUN
+        container: {
+
+            backgroundColor: 'white',
+
+        },
+        LoginPage: {
+            position: 'relative',
+            alignItems: 'stretch',
+           //flex: 1,
+            flexDirection: 'column',
+            width: 414,
+            height: 896,
+            backgroundColor: '#ffffff',
+        },
+        CalorieCapture: {
+            //width: '100%',
+            //height: '80%',
+
+            alignItems: 'flex-start',
+            //fontFamily: 'Roboto, sans-serif',
+            fontSize: 48,
+            fontWeight: '900',
+            fontStyle: 'italic',
+            color: '#5048e5',
+        },
         input: {
             height: 40,
             margin: 12,
             borderWidth: 1,
             padding: 10,
         },
-        LoginPage: {
-            position: 'relative',
-            width: 414,
-            height: 896,
-            backgroundColor: '#ffffff',
-        },
+
         Group1: {
             position: 'absolute',
             left: 60,
@@ -155,23 +175,7 @@ export default function LoginScreen({route, navigation}) {
             lineHeight: 14.0625,
             textAlign: 'center',
         },
-        CalorieCapture: {
 
-            width: '100%',
-
-            flex: 1,
-            flexDirection: 'row',
-            alignItems: 'flex-start',
-
-
-
-            //fontFamily: 'Roboto, sans-serif',
-            fontSize: 48,
-            fontWeight: '900',
-            fontStyle: 'italic',
-            color: '#5048e5',
-
-        },
     });
 
     const loginSuccess = () => {

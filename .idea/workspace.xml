@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="">
+    <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="출첵">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/member/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/member/LoginScreen.js" afterDir="false" />
     </list>
@@ -186,8 +186,16 @@
       <workItem from="1636261173212" duration="2201000" />
       <workItem from="1636266224307" duration="486000" />
       <workItem from="1637495796445" duration="5634000" />
-      <workItem from="1637503562688" duration="2810000" />
+      <workItem from="1637503562688" duration="4154000" />
     </task>
+    <task id="LOCAL-00001" summary="출첵">
+      <created>1637542270185</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637542270185</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -219,6 +227,21 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="출첵" />
+    <option name="LAST_COMMIT_MESSAGE" value="출첵" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/components/main/Entry.js" />
