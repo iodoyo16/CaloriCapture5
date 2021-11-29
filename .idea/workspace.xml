@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="Working on LoginView_1">
+    <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/member/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/member/LoginScreen.js" afterDir="false" />
     </list>
@@ -30,6 +30,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/components/member/LoginScreen.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -147,7 +150,7 @@
       </method>
     </configuration>
     <configuration name="iOS" type="ReactNative" factoryName="React Native">
-      <node-interpreter value="/usr/local/bin/node" />
+      <node-interpreter value="node" />
       <react-native value="$PROJECT_DIR$/node_modules/react-native" />
       <platform value="IOS" />
       <envs />
@@ -195,6 +198,7 @@
       <workItem from="1636266224307" duration="486000" />
       <workItem from="1637495796445" duration="5634000" />
       <workItem from="1637503562688" duration="13267000" />
+      <workItem from="1638199912059" duration="923000" />
     </task>
     <task id="LOCAL-00001" summary="출첵">
       <created>1637542270185</created>
@@ -265,6 +269,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="출첵" />

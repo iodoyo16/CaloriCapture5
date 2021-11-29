@@ -49,6 +49,7 @@ export default function LoginScreen({route, navigation}) {
                     onChangeText={(value)=>{
                         setEmail(value);
                     }}
+                    autoCapitalize='none'
                     value={email}
                     keyboardType="email-address"
                 />
@@ -60,6 +61,8 @@ export default function LoginScreen({route, navigation}) {
                         setPassword(value);
                     }}
                     value={password}
+                    secureTextEntry={true}
+                    autoCapitalize='none'
                     placeholder="Password"
                     keyboardType="default"
                 />
