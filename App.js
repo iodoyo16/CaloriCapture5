@@ -62,8 +62,8 @@ export default function App() {
                             let iconName;
                             if (route.name === NextFoodScreenName) {
                                 iconName = focused
-                                    ? 'ios-information-circle'
-                                    : 'ios-information-circle-outline';
+                                    ? 'ios-home'
+                                    : 'ios-home-outline';
                             }
                             if (route.name === CameraScreenName) {
                                 iconName = focused
@@ -72,14 +72,14 @@ export default function App() {
                             }
                             if (route.name === HistoryScreenName) {
                                 iconName = focused
-                                    ? 'ios-list'
-                                    : 'ios-list-outline';
+                                    ? 'ios-calendar'
+                                    : 'ios-calendar-outline';
                             }
 
                             // You can return any component that you like here!
                             return <Ionicons name={iconName} size={size} color={color} />;
                         },
-                        tabBarActiveTintColor: 'tomato',
+                        tabBarActiveTintColor: '#5048e5',
                         tabBarInactiveTintColor: 'gray',
                     })}
                 >
