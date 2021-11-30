@@ -2,7 +2,7 @@
 
 export default class ScreenNames{
 
-    static NextFoodScreenName = '식단 추천';
+    static NextFoodScreenName = '홈';
     static CameraScreenName = '식단 촬영';
     static HistoryScreenName = '나의 기록';
 
