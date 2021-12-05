@@ -9,8 +9,66 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/components/member/LoginScreen.js" root0="FORCE_HIGHLIGHTING" />
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+<<<<<<< Updated upstream
+=======
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="hyeokjun97" />
+        <option name="repository" value="CaloriCapture5" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="f51b8937-349b-4789-ad38-8f585d663614" />
+        <option name="url" value="https://github.com/hyeokjun97/CaloriCapture5.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+>>>>>>> Stashed changes
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/components/main/Entry.js" />
+        <option value="$PROJECT_DIR$/src/components/home/HomeScreen.js" />
+        <option value="$PROJECT_DIR$/src/components/home/SecondScreen.js" />
+        <option value="$PROJECT_DIR$/src/components/home/HistoryScreen.js" />
+        <option value="$PROJECT_DIR$/src/components/home/NextFoodScreen.js" />
+        <option value="$PROJECT_DIR$/src/components/member/LoginScreen.js" />
+        <option value="$PROJECT_DIR$/src/components/member/RegisterScreen.js" />
+        <option value="$PROJECT_DIR$/src/components/home/detail/HistoryDetailScreen.js" />
+        <option value="$PROJECT_DIR$/App.js" />
+        <option value="$PROJECT_DIR$/src/components/home/CameraScreen.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="2560" />
+    <option name="height" value="1440" />
+>>>>>>> parent of 2181f91f (sangyoung-registerpage)
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="TaskManager">
