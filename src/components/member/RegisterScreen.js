@@ -35,7 +35,6 @@ function RegisterScreen({route,navigation}){
             <View style={styles.Header}>
                 <Text style={styles.Title}>Calorie Capture</Text>
             </View>
-<<<<<<< Updated upstream
                 <View style={styles.RegisterForm}>
                     <TextInput style={styles.Formelem}
                         placeholder='ID'
@@ -67,7 +66,6 @@ function RegisterScreen({route,navigation}){
                         }}
                     />
                 </View>
-=======
             <View style={styles.RegisterForm}>
                 <TextInput style={styles.Formelem}
                            placeholder='ID'
@@ -99,8 +97,6 @@ function RegisterScreen({route,navigation}){
                     }}
                 />
             </View>
->>>>>>> Stashed changes
-
         </SafeAreaView>
     );
 }
