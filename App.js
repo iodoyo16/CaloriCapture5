@@ -21,7 +21,7 @@ import ScreenNames from "./src/components/ScreenNames";
 import FoodDetailScreen from "./src/components/home/detail/FoodDetailScreen";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //EDIT
-
+//for config
 function HomeScreen() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
