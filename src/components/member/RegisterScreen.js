@@ -35,6 +35,7 @@ function RegisterScreen({route,navigation}){
             <View style={styles.Header}>
                 <Text style={styles.Title}>Calorie Capture</Text>
             </View>
+<<<<<<< Updated upstream
                 <View style={styles.RegisterForm}>
                     <TextInput style={styles.Formelem}
                         placeholder='ID'
@@ -66,6 +67,39 @@ function RegisterScreen({route,navigation}){
                         }}
                     />
                 </View>
+=======
+            <View style={styles.RegisterForm}>
+                <TextInput style={styles.Formelem}
+                           placeholder='ID'
+                           value={userInfo.ID}
+                           onChangeText={text=>handleInfoChange('ID',text)}
+                           autoCapitalize='none'
+                />
+                <TextInput style={styles.Formelem}
+                           placeholder='password'
+                           value={userInfo.password}
+                           onChangeText={text=>handleInfoChange('password',text)}
+                           autoCapitalize='none'
+                           secureTextEntry={true}
+                />
+                <TextInput style={styles.Formelem}
+                           placeholder='extras'
+                           value={userInfo.extras}
+                           onChangeText={text=>handleInfoChange('extras',text)}
+                           autoCapitalize='none'
+                />
+            </View>
+            <View style={styles.SubmitButton}>
+                <Button
+                    title={'Submit'}
+                    color={'#fff'}
+                    onPress={()=>{
+                        console.log(userInfo);
+                        tryRegister(userInfo.ID,userInfo.password,userInfo.extras);
+                    }}
+                />
+            </View>
+>>>>>>> Stashed changes
 
         </SafeAreaView>
     );
