@@ -17,6 +17,7 @@ import CameraScreen from "./src/components/home/CameraScreen";
 import HistoryScreen from "./src/components/home/HistoryScreen";
 import API from "./src/api/API";
 import LoginScreen from "./src/components/member/LoginScreen";
+import RegisterScreen from "./src/components/member/RegisterScreen";
 import ScreenNames from "./src/components/ScreenNames";
 import FoodDetailScreen from "./src/components/home/detail/FoodDetailScreen";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -47,11 +48,13 @@ export default function App() {
     const NextFoodScreenName = ScreenNames.NextFoodScreenName;
     const CameraScreenName = ScreenNames.CameraScreenName;
     const HistoryScreenName = ScreenNames.HistoryScreenName;
+    const RegisterScreenName =ScreenNames.RegisterScreenName;
+    const LoginScreenName=ScreenNames.LoginScreenName;
 
+    const Stack = createNativeStackNavigator();
     const isLoggedIn = async () => {
         return await API.auth.isLogin();
     };
-
     const routeScreen = async () => {
         let loggedIn = await isLoggedIn();
         if (loggedIn){
@@ -62,8 +65,8 @@ export default function App() {
                             let iconName;
                             if (route.name === NextFoodScreenName) {
                                 iconName = focused
-                                    ? 'ios-information-circle'
-                                    : 'ios-information-circle-outline';
+                                    ? 'ios-home'
+                                    : 'ios-home-outline';
                             }
                             if (route.name === CameraScreenName) {
                                 iconName = focused
@@ -72,27 +75,31 @@ export default function App() {
                             }
                             if (route.name === HistoryScreenName) {
                                 iconName = focused
-                                    ? 'ios-list'
-                                    : 'ios-list-outline';
+                                    ? 'ios-calendar'
+                                    : 'ios-calendar-outline';
                             }
 
                             // You can return any component that you like here!
                             return <Ionicons name={iconName} size={size} color={color} />;
                         },
-                        tabBarActiveTintColor: 'tomato',
+                        tabBarActiveTintColor: '#5048e5',
                         tabBarInactiveTintColor: 'gray',
                     })}
                 >
                     <Tab.Screen name={NextFoodScreenName} component={NextFoodScreen} />
                     <Tab.Screen name={CameraScreenName} component={CameraScreen} />
                     <Tab.Screen name={HistoryScreenName} component={HistoryScreen} />
-
                 </Tab.Navigator>
 
             </NavigationContainer>;
             setMainScreen(screen);
         }else{
-            const screen = <LoginScreen/>;
+            const screen = <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name ={LoginScreenName} component={LoginScreen} />
+                    <Stack.Screen name={RegisterScreenName} component={RegisterScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>;
             setMainScreen(screen);
         }
     };

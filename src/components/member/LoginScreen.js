@@ -4,10 +4,11 @@ import {
     View, StyleSheet, Button, TouchableOpacity,
 } from 'react-native';
 import API from "../../api/API";
+import RegisterScreen from "./RegisterScreen";
 import SafeAreaView from "react-native/Libraries/Components/SafeAreaView/SafeAreaView";
+import ScreenNames from "../ScreenNames";
 
-
-
+const RegisterScreenName=ScreenNames.RegisterScreenName;
 export default function LoginScreen({route, navigation}) {
 
     const [email, setEmail] = React.useState(null);
@@ -17,12 +18,14 @@ export default function LoginScreen({route, navigation}) {
         // 로그인 완료시 호출하세요. 수정 필요 없음.
 
     };
+    const registerPage = () => {
+        // 회원가입 화면으로 전환
 
+    };
     const loginFailed = (error) => {
         // 로그인 실패시 호출하세요.
         alert("로그인 실패! 계정을 확인해주세요.\n" + error.message);
     };
-
     const tryLogin = (email, password) => {
         API.auth.login(email, password).then(response=>{
             if (response.error){
@@ -79,7 +82,9 @@ export default function LoginScreen({route, navigation}) {
             </View>
         </View>
         <View style={styles.footer}>
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={()=>{navigation.navigate(RegisterScreenName)}}
+            >
                 {/*여기서 링크 누르면 Register Page로 이동 */}
                 <Text style={styles.additionalOptionText}>
                     Register New Account
