@@ -18,10 +18,6 @@ export default function LoginScreen({route, navigation}) {
         // 로그인 완료시 호출하세요. 수정 필요 없음.
 
     };
-    const registerPage = () => {
-        // 회원가입 화면으로 전환
-
-    };
     const loginFailed = (error) => {
         // 로그인 실패시 호출하세요.
         alert("로그인 실패! 계정을 확인해주세요.\n" + error.message);

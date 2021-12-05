@@ -6,6 +6,7 @@ import {
 import API from "../../api/API";
 import SafeAreaView from "react-native/Libraries/Components/SafeAreaView/SafeAreaView";
 
+const neededInfo=[{name:"ID"},{name:"password"},{name:"passwordCheck"},{name:"extras"}]
 function RegisterScreen({route,navigation}){
     const [email,setEmail]=useState('');
     const [userInfo,setUserInfo]=useState({ID:'',password:'',extras:''});
@@ -13,17 +14,16 @@ function RegisterScreen({route,navigation}){
         setUserInfo({...userInfo,[name]:text});
     }
     const registerSuccess=()=>{
-        props.navigation.goBack(null);
+        navigation.goBack(null);
     };
     const registerFail=(error)=>{
         alert("register failed\n"+error.message);
-        props.navigation.goBack(null);
     };
     const tryRegister=(ID,password,extras)=>{
         const email=ID;
-        API.auth.register(email,password,extras).then(res=>{
-            if(res.error){
-                registerFail(res.error);
+        API.auth.register(email,password,extras).then((response)=>{
+            if(response.error){
+                registerFail(response.error);
             }
             else{
                 registerSuccess();
@@ -36,25 +36,16 @@ function RegisterScreen({route,navigation}){
                 <Text style={styles.Title}>Calorie Capture</Text>
             </View>
             <View style={styles.RegisterForm}>
-                <TextInput style={styles.Formelem}
-                           placeholder='ID'
-                           value={userInfo.ID}
-                           onChangeText={text=>handleInfoChange('ID',text)}
-                           autoCapitalize='none'
-                />
-                <TextInput style={styles.Formelem}
-                           placeholder='password'
-                           value={userInfo.password}
-                           onChangeText={text=>handleInfoChange('password',text)}
-                           autoCapitalize='none'
-                           secureTextEntry={true}
-                />
-                <TextInput style={styles.Formelem}
-                           placeholder='extras'
-                           value={userInfo.extras}
-                           onChangeText={text=>handleInfoChange('extras',text)}
-                           autoCapitalize='none'
-                />
+                {neededInfo.map((item)=>{
+                    return (
+                        <TextInput style={styles.Formelem}
+                            placeholder={item.name}
+                            value={userInfo[item.name]}
+                            onChangeText={text=>handleInfoChange(name,text)}
+                            autoCapitalize='none'/>
+                        )
+                    })
+                }
             </View>
             <View style={styles.SubmitButton}>
                 <Button
