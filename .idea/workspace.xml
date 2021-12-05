@@ -39,6 +39,7 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+<<<<<<< Updated upstream
   <component name="GithubPullRequestsUISettings">
     <option name="recentNewPullRequestHead">
       <RepoCoordinatesHolder>
@@ -52,6 +53,11 @@
         <option name="url" value="https://github.com/hyeokjun97/CaloriCapture5.git" />
       </UrlAndAccount>
     </option>
+=======
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/member/LoginScreen.js" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> Stashed changes
   </component>
 >>>>>>> Stashed changes
   <component name="IdeDocumentHistory">
