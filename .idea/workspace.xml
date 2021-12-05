@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
@@ -14,6 +15,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 >>>>>>> Stashed changes
     </list>
+=======
+    <list default="true" id="771e4d2d-be97-4562-8087-0f40a8d2ff4f" name="Default Changelist" comment="Working on LoginView_1" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +44,7 @@
     </file-type-list>
   </component>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <component name="GithubPullRequestsUISettings">
     <option name="recentNewPullRequestHead">
       <RepoCoordinatesHolder>
@@ -58,6 +63,12 @@
     <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/member/LoginScreen.js" root0="FORCE_HIGHLIGHTING" />
 >>>>>>> Stashed changes
+  </component>
+>>>>>>> Stashed changes
+=======
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/member/LoginScreen.js" root0="FORCE_HIGHLIGHTING" />
   </component>
 >>>>>>> Stashed changes
   <component name="IdeDocumentHistory">
@@ -195,9 +206,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.start" />
       <item itemvalue="React Native.Android" />
       <item itemvalue="React Native.iOS" />
+      <item itemvalue="npm.start" />
     </list>
     <recent_temporary>
       <list>
@@ -305,6 +316,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="출첵" />
