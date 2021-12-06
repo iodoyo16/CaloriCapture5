@@ -4,6 +4,7 @@ import {
     TouchableOpacity,
     View,
     StyleSheet,
+    Image,
 } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import API from "../../api/API";
@@ -12,6 +13,7 @@ import ScreenNames from "../ScreenNames";
 //HERE
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FoodDetailScreen from "./detail/FoodDetailScreen";
+import img from "../Food_Photo/meal3.jpeg";
 
 
 const styles = StyleSheet.create({
@@ -51,8 +53,24 @@ function CameraScreenHome({route, navigation}) {
         if (this.camera) {
             const options = { quality: 0.5, base64: true };
             const data = await this.camera.takePictureAsync(options);
+
+            /*Intercept*/
+            /*const base64 = data.base64;
+            const foods = await getFoodInfos(base64);*/
+
+            //const img = require('../Food_Photo/meal3.jpeg');
+
+            //METHOD: 1
+            //const fs = require('react-native-fs');
+            //let readFile = fs.readFileSync('../Food_Photo/meal3.jpeg'); //Image File Read
+            //let encode = Buffer.from(readFile).toString('base64'); //File Encoding
+            //let makeEncodeFile = fs.writeFileSync('./encodeFile', encode);
+            //let base64 = fs.readFileSync('./encodeFile', 'base64');
+
             const base64 = data.base64;
+
             const foods = await getFoodInfos(base64);
+
             console.log(foods);
             navigation.navigate('FoodDetailScreen', {
                 foods: foods,
@@ -84,7 +102,9 @@ function CameraScreenHome({route, navigation}) {
                     buttonNegative: 'Cancel',
                 }}
                 onGoogleVisionBarcodesDetected={({ barcodes }) => {
+
                     console.log(barcodes);
+
                 }}
             />
             <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>

@@ -1,15 +1,22 @@
-import {Text, View, Button, StyleSheet, TouchableOpacity,} from "react-native";
+import {Text, View, Button, StyleSheet, TouchableOpacity, Image} from "react-native";
 import React from 'react';
+//import "src/components/Food_Photo"
+
 
 import Config from "../../api/Config";
 
+import {Grid, LineChart, XAxis, YAxis} from "react-native-svg-charts";
+
 //Home SCREEN
 export default function NextFoodScreen({route, navigation}) {
-
-
-
-
-
+    //DATA EXAMPLE
+    const data = [ 30, 60, 90 ]
+    const meal= ["아침", "점심", "저녁"]
+    const data_kcal = [ 20, 50, 70 ]
+    const data_protien = [ 25, 10, 40 ]
+    const axesSvg = { fontSize: 14, fill: '#5048e5' };
+    const verticalContentInset = { top: 5, bottom: 5 }
+    const xAxisHeight = 20
 
 
     // JUN WOKRING
@@ -18,16 +25,43 @@ export default function NextFoodScreen({route, navigation}) {
             <Text style={styles.TodaysMeal}>Today's MEAL</Text>
         </View>
         <View style={styles.body1}>
-            <View style={styles.item3}/>
-            <View style={styles.item2}/>
-            <View style = {styles.item1}/>
+            <Image style={styles.item3}
+                   source={require('../Food_Photo/meal3.jpeg')}/>
+            <Image style={styles.item2}
+                   source={require('../Food_Photo/meal2.jpeg')}/>
+            <Image style={styles.item1}
+                   source={require('../Food_Photo/meal1.jpeg')}/>
         </View>
         <View style={styles.body2}>
             <View style={styles.GraphBox}>
-                <Text style={{
-                    textAlign: 'center',
+                <Text style={styles.NutritionData}>Today's Nutrition Data</Text>
+                <View style={{ height: "100%", padding: 20, flexDirection: 'row', top: 20, }}>
+                    <YAxis
+                        data={data}
+                        style={{ marginBottom: xAxisHeight }}
+                        contentInset={verticalContentInset}
+                        svg={axesSvg}
+                    />
+                    <View style={{ flex: 1, marginLeft: 10 }}>
+                        <LineChart
+                            style={{ flex: 1}}
+                            data={data_protien}
+                            contentInset={verticalContentInset}
+                            svg={{ stroke: 'rgb(134, 65, 244)' }}
+                        >
+                            <Grid/>
+                        </LineChart>
 
-                }}>GRAPH</Text>
+                        <XAxis
+                            style={{ marginHorizontal: -10, height: xAxisHeight }}
+                            data={meal}
+                            formatLabel={(value, index) => value}
+                            contentInset={{ left: 10, right: 10 }}
+                            svg={axesSvg}
+                        />
+                    </View>
+                </View>
+
             </View>
         </View>
         <View style={styles.body3}>
@@ -35,8 +69,6 @@ export default function NextFoodScreen({route, navigation}) {
                 <Text style = {styles.NextMealRecomendationTxt}>Next Meal Recomendation</Text>
             </TouchableOpacity>
         </View>
-
-
     </View>
 }
 
@@ -82,6 +114,16 @@ const styles = StyleSheet.create({ //Screen View Components - JUN
         textAlignVertical: 'center',
         fontSize: 30,
         fontWeight: '700',
+        color: '#5048e5',
+    },
+    NutritionData: {
+        position: 'absolute',
+        width: '100%',
+        height: '80%',
+        textAlign: 'left',
+        textAlignVertical: 'center',
+        fontSize: 20,
+        fontWeight: '500',
         color: '#5048e5',
     },
     NextMealRecomendationBtn: {
@@ -155,7 +197,7 @@ const styles = StyleSheet.create({ //Screen View Components - JUN
     GraphBox: {
       height: '90%',
         width: '90%',
-        backgroundColor: '#cccccc',
+        backgroundColor: '#ececec',
         borderRadius: 5,
         //shadow
         shadowOffset: {
