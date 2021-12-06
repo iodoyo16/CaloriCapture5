@@ -1,38 +1,56 @@
 import React from 'react';
 import {
     Button, StyleSheet,
-    Text, TouchableOpacity,
+    Text, TextInput, TouchableOpacity,
     View
 } from 'react-native';
-
+function convertDateFormat(date) {
+    return date.toLocaleDateString().replace(/\./g, '').split(' ').map((v,i)=> i > 0 && v.length < 2 ? '0' + v : v).join('-');
+}
 export default function HistoryDetailScreen({route, navigation}){
     const {selectedDate}=route.params;
-    return (<View style={styles.Container}>
-                <View style = {styles.header}>
-                    <Text style={styles.TodaysMeal}>{selectedDate} MEAL</Text>
-                </View>
-                <View style={styles.body1}>
-                    <View style={styles.item3}/>
-                    <View style={styles.item2}/>
-                    <View style = {styles.item1}/>
-                </View>
-                <View style={styles.body2}>
-                    <View style={styles.GraphBox}>
-                        <Text style={{
-                            textAlign: 'center',
 
-                        }}>GRAPH</Text>
-                    </View>
-                </View>
-                <View style={styles.body3}>
-                    <TouchableOpacity
-                        style = {styles.NextMealRecomendationBtn}
-                        onPress={()=>{navigation.goBack(null)}}>
-                        <Text style = {styles.NextMealRecomendationTxt}>Next Meal Recomendation</Text>
+    console.log(selectedDate);
+    const Today=convertDateFormat(new Date());
+    console.log(Today);
+    return (<View style={styles.Container}>
+        <View style = {styles.header}>
+            <Text style={styles.TodaysMeal}>
+                {
+                    selectedDate==Today
+                    ? 'Today'
+                    : selectedDate
+                }'s MEAL</Text>
+        </View>
+        <View style={styles.body1}>
+            <View style={styles.item3}/>
+            <View style={styles.item2}/>
+            <View style = {styles.item1}/>
+        </View>
+        <View style={styles.body2}>
+            <View style={styles.GraphBox}>
+                <Text style={{
+                    textAlign: 'center',
+
+                }}>GRAPH</Text>
+            </View>
+        </View>
+        <View style={styles.body3}>
+            {
+                selectedDate==Today
+                    ? <TouchableOpacity style={styles.NextMealRecomendationBtn}>
+                        <Text style={styles.NextMealRecomendationTxt}>Next Meal Recomendation</Text>
                     </TouchableOpacity>
-                </View>
-            </View>);
-}
+                    : null
+            }
+            <Button title='goback' onPress={() => {
+                navigation.goBack(null)
+            }}/>
+        </View>
+    </View>
+    )
+};
+
 const styles = StyleSheet.create({ //Screen View Components - JUN
 
     Container: { //container
