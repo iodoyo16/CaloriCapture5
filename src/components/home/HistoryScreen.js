@@ -17,7 +17,6 @@ const cur_date=Date();
 
 function HistoryScreenHome({route, navigation}){
 
-
     const [loggedIn, setLoggedIn] = React.useState(null);
     const [markedDate,setMarkedDate]=React.useState({});
     const logout = () => {
@@ -59,8 +58,6 @@ function HistoryScreenHome({route, navigation}){
                 // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
                 disableAllTouchEventsForDisabledDays={true}
                 enableSwipeMonths={true}
-                // Callback which gets executed when visible months change in scroll view. Default = undefined
-                onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
                 // Max amount of months allowed to scroll to the past. Default = 50
                 pastScrollRange={12}
                 // Max amount of months allowed to scroll to the future. Default = 50
