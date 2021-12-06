@@ -13,7 +13,7 @@ import {selectedDayBackgroundColor} from "react-native-calendars/src/style";
 
 const HistoryDetailScreenName =ScreenName.HistoryDetailScreenName;
 
-const cur_date=new Date();
+const cur_date=Date();
 
 function HistoryScreenHome({route, navigation}){
 
@@ -45,6 +45,7 @@ function HistoryScreenHome({route, navigation}){
                 maxDate={cur_date}
                 // Handler which gets executed on day press. Default = undefined
                 onDayPress={(day) => {
+                    console.log(day);
                     navigation.navigate(HistoryDetailScreenName,{selectedDate:day.dateString})
                 }}
                 // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
