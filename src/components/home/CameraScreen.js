@@ -4,14 +4,17 @@ import {
     TouchableOpacity,
     View,
     StyleSheet,
+    Image,
 } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import API from "../../api/API";
 import Config from "../../api/Config";
-import ScreenNames from "../ScreenNames";
+
+
 //HERE
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FoodDetailScreen from "./detail/FoodDetailScreen";
+import img from "../Food_Photo/meal3.jpeg";
 
 
 const styles = StyleSheet.create({
@@ -49,10 +52,18 @@ function CameraScreenHome({route, navigation}) {
 
     const takePicture = async () => {
         if (this.camera) {
-            const options = { quality: 0.5, base64: true };
+            const options = { quality: 0.5, base64: true, uri: "file://../Food_Photo/meal3.jpeg" };
             const data = await this.camera.takePictureAsync(options);
+
+
+
+
             const base64 = data.base64;
+
+
+            //console.log("AADONE", base64);
             const foods = await getFoodInfos(base64);
+
             console.log(foods);
             navigation.navigate('FoodDetailScreen', {
                 foods: foods,
@@ -84,9 +95,12 @@ function CameraScreenHome({route, navigation}) {
                     buttonNegative: 'Cancel',
                 }}
                 onGoogleVisionBarcodesDetected={({ barcodes }) => {
+
                     console.log(barcodes);
+
                 }}
             />
+
             <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
                 <TouchableOpacity onPress={takePicture.bind(this)} style={styles.capture}>
                     <Text style={{ fontSize: 14 }}> 촬영! </Text>
