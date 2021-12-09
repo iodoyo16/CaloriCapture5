@@ -88,13 +88,12 @@ export default function App() {
                         },
                         tabBarActiveTintColor: '#5048e5',
                         tabBarInactiveTintColor: 'gray',
-                    })}
-                >
+                        headerShown:false
+                    })}>
                     <Tab.Screen name={NextFoodScreenName} component={NextFoodScreen}/>
                     <Tab.Screen name={CameraScreenName} component={CameraScreen} />
                     <Tab.Screen name={HistoryScreenName} component={HistoryScreen} />
                 </Tab.Navigator>
-
             </NavigationContainer>;
             setMainScreen(screen);
         }else{

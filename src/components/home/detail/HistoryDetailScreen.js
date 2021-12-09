@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     Button, StyleSheet,
-    Text, TextInput, TouchableOpacity,
+    Text, TextInput, TouchableOpacity,SafeAreaView,
     View
 } from 'react-native';
 function convertDateFormat(date) {
@@ -9,11 +9,8 @@ function convertDateFormat(date) {
 }
 export default function HistoryDetailScreen({route, navigation}){
     const {selectedDate}=route.params;
-
-    console.log(selectedDate);
     const Today=convertDateFormat(new Date());
-    console.log(Today);
-    return (<View style={styles.Container}>
+    return (<SafeAreaView style={styles.Container}>
         <View style = {styles.header}>
             <Text style={styles.TodaysMeal}>
                 {
@@ -47,7 +44,7 @@ export default function HistoryDetailScreen({route, navigation}){
                 navigation.goBack(null)
             }}/>
         </View>
-    </View>
+    </SafeAreaView>
     )
 };
 

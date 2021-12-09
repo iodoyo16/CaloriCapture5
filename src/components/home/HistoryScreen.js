@@ -1,7 +1,7 @@
 import React from "react";
 import {
     Button, Text, View,
-    StyleSheet,
+    StyleSheet, SafeAreaView,
 } from 'react-native';
 import API from "../../api/API";
 import {Calendar ,Agenda, CalendarList} from "react-native-calendars"
@@ -10,6 +10,7 @@ import ScreenName from '../ScreenNames';
 import HistoryDetailScreen from './detail/HistoryDetailScreen';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {selectedDayBackgroundColor} from "react-native-calendars/src/style";
+import HistoryStorage from "../../model/HistoryStorage"
 
 const HistoryDetailScreenName =ScreenName.HistoryDetailScreenName;
 
@@ -24,17 +25,18 @@ function HistoryScreenHome({route, navigation}){
             setLoggedIn(false);
         });
     }
-    const custom_theme=
     React.useEffect(()=>{
 
     }, [loggedIn]);
     //TODO
-    return (<View style={styles.HistoryContainer}>
-            <View style={styles.Header}>
+    HistoryStorage.getHistory().then(()=>{console.log("hi")});
+        return(
+    <SafeAreaView style={styles.HistoryContainer}>
+        <View style={styles.Header}>
             <Text style={styles.Title}>
                 History
             </Text>
-            </View>
+        </View>
         <View style={styles.CalendarContainer}>
             <CalendarList
                 style={styles.CurMonth}
@@ -44,8 +46,7 @@ function HistoryScreenHome({route, navigation}){
                 maxDate={cur_date}
                 // Handler which gets executed on day press. Default = undefined
                 onDayPress={(day) => {
-                    console.log(day);
-                    navigation.navigate(HistoryDetailScreenName,{selectedDate:day.dateString})
+                    navigation.navigate(HistoryDetailScreenName, {selectedDate: day.dateString})
                 }}
                 // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
                 monthFormat={'yyyy MM'}
@@ -72,21 +73,21 @@ function HistoryScreenHome({route, navigation}){
             <View style={styles.LogoutButton}>
                 <Button title={'로그아웃 (테스트용)'}
                         color='#fff'
-                        onPress={()=>{
+                        onPress={() => {
                             logout();
                         }}
 
                 />
             </View>
         </View>
-    </View>
-    );
+    </SafeAreaView>
+);
 }
 
 export default function HistoryScreen({route, navigation}) {
     const Stack = createNativeStackNavigator();
-    return(<Stack.Navigator screenOptions={{headerShown:false}}>
-            <Stack.Screen name ='HistoryScreenHome' component={HistoryScreenHome} />
+    return(<Stack.Navigator>
+            <Stack.Screen name ='나의 월간 기록' component={HistoryScreenHome} />
             <Stack.Screen name={HistoryDetailScreenName} component={HistoryDetailScreen} />
         </Stack.Navigator>);
 }
