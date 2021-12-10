@@ -13,7 +13,7 @@ export default function NextFoodScreen({route, navigation}) {
     const data = [ 30, 60, 90 ]
     const meal= ["아침", "점심", "저녁"]
     const data_kcal = [ 20, 50, 70 ]
-    const data_protien = [ 25, 10, 40 ]
+    const data_protien = [ 45, 60, 70 ]
     const axesSvg = { fontSize: 14, fill: '#5048e5' };
     const verticalContentInset = { top: 5, bottom: 5 }
     const xAxisHeight = 20
