@@ -1,12 +1,22 @@
 import HistoryStorage from './HistoryStorage'
 
-class HistoryElem{
-    constructor(date,food_list,amount_list) {
-        this.elem={'food_list':food_list,'amount_list':amount_list};
-    }
-}
-class History{
-    static pushHistory(elem_list){
 
+class HistoryInfo{
+    constructor(userId){
+        this.userId=userId;
+        this.historyList=HistoryStorage.getHistory(this.userId);
+    }
+    addHistory(oneMeal){
+        const now=new Date();
+        HistoryStorage.addHistory(this.userId,oneMeal);
+    }
+    getMultipleFoodInfo=async(oneDayInfo)=>{
+        oneDayInfo.map((oneMeal)=>{
+            HistoryStorage.getMultipleFoodInfo(oneMeal.foodList).then((response)=>{
+                console.log(response.result);
+            })
+        })
     }
 }
+
+module.exports=HistoryInfo;

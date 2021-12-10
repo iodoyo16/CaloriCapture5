@@ -10,27 +10,41 @@ import ScreenName from '../ScreenNames';
 import HistoryDetailScreen from './detail/HistoryDetailScreen';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {selectedDayBackgroundColor} from "react-native-calendars/src/style";
-import HistoryStorage from "../../model/HistoryStorage"
+import HistoryInfo from "../../model/History"
 
 const HistoryDetailScreenName =ScreenName.HistoryDetailScreenName;
 
 const cur_date=Date();
 
-function HistoryScreenHome({route, navigation}){
-
-    const [loggedIn, setLoggedIn] = React.useState(null);
+const HistoryScreenHome=async({route, navigation})=>{
+    const [loggedIn, setLoggedIn] = React.useState(true);
     const [markedDate,setMarkedDate]=React.useState({});
+    let myHistoryInfo;
     const logout = () => {
         API.auth.logout().then((response)=>{
             setLoggedIn(false);
         });
     }
-    React.useEffect(()=>{
-
-    }, [loggedIn]);
-    //TODO
-    HistoryStorage.getHistory().then(()=>{console.log("hi")});
-        return(
+    const getMyInfo=async ()=>{
+        const me= await API.auth.getMe();
+        return JSON.parse(JSON.stringify(me));
+    }
+    getMyInfo().then((myInfo)=>{
+        const tmpHistoryInfo= new HistoryInfo(myInfo.id);
+        const dateOfHistory=Object.keys(tmpHistoryInfo.historyList);
+        const marked={};
+        dateOfHistory.map((date)=>{
+            marked[date]={customStyles:
+                {
+                    container:{backgroundColor:'#70d7c7',},
+                    text:{color:'white',}
+                }
+            };
+        });
+        setMarkedDate(marked);
+        myHistoryInfo=tmpHistoryInfo;
+    })
+    return(
     <SafeAreaView style={styles.HistoryContainer}>
         <View style={styles.Header}>
             <Text style={styles.Title}>
@@ -39,6 +53,8 @@ function HistoryScreenHome({route, navigation}){
         </View>
         <View style={styles.CalendarContainer}>
             <CalendarList
+                markingType={'custom'}
+                markedDates={markedDate}
                 style={styles.CurMonth}
                 // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
                 minDate={'2021-01-01'}
@@ -46,7 +62,10 @@ function HistoryScreenHome({route, navigation}){
                 maxDate={cur_date}
                 // Handler which gets executed on day press. Default = undefined
                 onDayPress={(day) => {
-                    navigation.navigate(HistoryDetailScreenName, {selectedDate: day.dateString})
+                    const date=day.dateString;
+                    navigation.navigate(HistoryDetailScreenName, {
+                        selectedDate: date,
+                    });
                 }}
                 // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
                 monthFormat={'yyyy MM'}
@@ -80,8 +99,7 @@ function HistoryScreenHome({route, navigation}){
                 />
             </View>
         </View>
-    </SafeAreaView>
-);
+    </SafeAreaView>);
 }
 
 export default function HistoryScreen({route, navigation}) {

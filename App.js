@@ -67,7 +67,7 @@ export default function App() {
                         tabBarIcon: ({ focused, color, size }) => {
                             let iconName;
                             if (route.name === NextFoodScreenName) {
-                                route.params={selectedDate:cur_Date};
+                                //route.params={selectedDate:cur_Date};
                                 iconName = focused
                                     ? 'ios-home'
                                     : 'ios-home-outline';

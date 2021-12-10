@@ -4,13 +4,16 @@ import {
     Text, TextInput, TouchableOpacity,SafeAreaView,
     View
 } from 'react-native';
+import fs from "react-native-fs";
+import HistoryStorage from "../../../model/HistoryStorage"
 function convertDateFormat(date) {
     return date.toLocaleDateString().replace(/\./g, '').split(' ').map((v,i)=> i > 0 && v.length < 2 ? '0' + v : v).join('-');
 }
 export default function HistoryDetailScreen({route, navigation}){
-    const {selectedDate}=route.params;
+    const {selectedDate,myHistoryInfo}=route.params;
+    console.log(myHistoryInfo);
     const Today=convertDateFormat(new Date());
-    return (<SafeAreaView style={styles.Container}>
+        return (<SafeAreaView style={styles.Container}>
         <View style = {styles.header}>
             <Text style={styles.TodaysMeal}>
                 {

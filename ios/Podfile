@@ -13,6 +13,8 @@ pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
     :hermes_enabled => false
   )
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   target 'CaloriCapture5Tests' do
     inherit! :complete
     # Pods for testing
