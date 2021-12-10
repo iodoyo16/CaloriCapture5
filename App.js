@@ -18,6 +18,7 @@ import HistoryScreen from "./src/components/home/HistoryScreen";
 import API from "./src/api/API";
 import LoginScreen from "./src/components/member/LoginScreen";
 import RegisterScreen from "./src/components/member/RegisterScreen";
+import HistoryDetailScreen from "./src/components/home/detail/HistoryDetailScreen";
 import ScreenNames from "./src/components/ScreenNames";
 import FoodDetailScreen from "./src/components/home/detail/FoodDetailScreen";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -46,6 +47,7 @@ export default function App() {
     const [mainScreen, setMainScreen] = React.useState(null);
 
     const NextFoodScreenName = ScreenNames.NextFoodScreenName;
+    const HistoryDetailScreenName=ScreenNames.HistoryDetailScreenName;
     const CameraScreenName = ScreenNames.CameraScreenName;
     const HistoryScreenName = ScreenNames.HistoryScreenName;
     const RegisterScreenName =ScreenNames.RegisterScreenName;
@@ -55,6 +57,7 @@ export default function App() {
     const isLoggedIn = async () => {
         return await API.auth.isLogin();
     };
+    const cur_Date=Date();
     const routeScreen = async () => {
         let loggedIn = await isLoggedIn();
         if (loggedIn){
@@ -64,6 +67,7 @@ export default function App() {
                         tabBarIcon: ({ focused, color, size }) => {
                             let iconName;
                             if (route.name === NextFoodScreenName) {
+                                route.params={selectedDate:cur_Date};
                                 iconName = focused
                                     ? 'ios-home'
                                     : 'ios-home-outline';
@@ -86,7 +90,7 @@ export default function App() {
                         tabBarInactiveTintColor: 'gray',
                     })}
                 >
-                    <Tab.Screen name={NextFoodScreenName} component={NextFoodScreen} />
+                    <Tab.Screen name={NextFoodScreenName} component={NextFoodScreen}/>
                     <Tab.Screen name={CameraScreenName} component={CameraScreen} />
                     <Tab.Screen name={HistoryScreenName} component={HistoryScreen} />
                 </Tab.Navigator>
