@@ -40,9 +40,20 @@ function HistoryScreenHome({route, navigation}){
             const dateOfHistory=Object.keys(tmpHistoryInfo.historyList);
             const marked={};
             dateOfHistory.map((date)=>{
+                let sum=0;
+                tmpHistoryInfo.historyList[`${date}`].map((oneMeal)=>{
+                    sum=sum+oneMeal.totalKcal;
+                });
                 marked[date]={customStyles:
                         {
-                            container:{backgroundColor:'#70d7c7',},
+                            container:{
+                                backgroundColor:
+                                sum >= 2000
+                                ? 'red'
+                                : sum>1000
+                                ? '#70d7c7'
+                                    :'orange'
+                            },
                             text:{color:'white',}
                         }
                 };
