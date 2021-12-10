@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
     Button, Text, View,
     StyleSheet, SafeAreaView,
@@ -16,34 +16,41 @@ const HistoryDetailScreenName =ScreenName.HistoryDetailScreenName;
 
 const cur_date=Date();
 
-const HistoryScreenHome=async({route, navigation})=>{
-    const [loggedIn, setLoggedIn] = React.useState(true);
-    const [markedDate,setMarkedDate]=React.useState({});
-    let myHistoryInfo;
+function HistoryScreenHome({route, navigation}){
+    const [loggedIn, setLoggedIn] = useState(true);
+    const [markedDate,setMarkedDate]=useState({});
+    const [myHistoryInfo,setMyHistoryInfo]=useState();
     const logout = () => {
         API.auth.logout().then((response)=>{
             setLoggedIn(false);
         });
     }
+    useEffect(()=>{
+        (async ()=>{
+            await getMyHistoryInfo();
+        })();
+    }, [myHistoryInfo]);
     const getMyInfo=async ()=>{
         const me= await API.auth.getMe();
         return JSON.parse(JSON.stringify(me));
     }
-    getMyInfo().then((myInfo)=>{
-        const tmpHistoryInfo= new HistoryInfo(myInfo.id);
-        const dateOfHistory=Object.keys(tmpHistoryInfo.historyList);
-        const marked={};
-        dateOfHistory.map((date)=>{
-            marked[date]={customStyles:
-                {
-                    container:{backgroundColor:'#70d7c7',},
-                    text:{color:'white',}
-                }
-            };
-        });
-        setMarkedDate(marked);
-        myHistoryInfo=tmpHistoryInfo;
-    })
+    const getMyHistoryInfo=async()=>{
+        return getMyInfo().then((myInfo)=>{
+            const tmpHistoryInfo= new HistoryInfo(myInfo.id);
+            const dateOfHistory=Object.keys(tmpHistoryInfo.historyList);
+            const marked={};
+            dateOfHistory.map((date)=>{
+                marked[date]={customStyles:
+                        {
+                            container:{backgroundColor:'#70d7c7',},
+                            text:{color:'white',}
+                        }
+                };
+            });
+            setMarkedDate(marked);
+            setMyHistoryInfo(tmpHistoryInfo);
+        })
+    }
     return(
     <SafeAreaView style={styles.HistoryContainer}>
         <View style={styles.Header}>
@@ -62,9 +69,10 @@ const HistoryScreenHome=async({route, navigation})=>{
                 maxDate={cur_date}
                 // Handler which gets executed on day press. Default = undefined
                 onDayPress={(day) => {
-                    const date=day.dateString;
+                    const date = day.dateString;
                     navigation.navigate(HistoryDetailScreenName, {
                         selectedDate: date,
+                        oneDayInfo: myHistoryInfo.historyList[`${date}`]
                     });
                 }}
                 // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting

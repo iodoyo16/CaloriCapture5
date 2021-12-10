@@ -18,14 +18,21 @@ class HistoryStorage{
     static addHistory(userId,oneMeal){
         this.#history[`${userId}`].append(oneMeal);
     }
-    static getMultipleFoodInfo=(...foodNames)=>{
-        return API.logic.runFunction("food_db",
+    static getSingleFoodInfo=async (foodName)=>{
+        const response=await API.logic.runFunction("DB_and_reco_API",
+            {
+                "cmd":"food.db_find_one",
+                "query":foodName
+            });
+        return response
+    }
+    static getMultipleFoodInfo=async(...foodNames)=>{
+        const response= await API.logic.runFunction("DB_and_reco_API",
             {
                 "cmd":"food.db_find_many",
                 "query":[...foodNames]
-        }).then((res)=>{
-            return JSON.parse(JSON.stringify(res));
-        }).catch(console.error);
+        });
+        return response;
     }
 }
 

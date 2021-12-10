@@ -11,11 +11,10 @@ class HistoryInfo{
         HistoryStorage.addHistory(this.userId,oneMeal);
     }
     getMultipleFoodInfo=async(oneDayInfo)=>{
-        oneDayInfo.map((oneMeal)=>{
-            HistoryStorage.getMultipleFoodInfo(oneMeal.foodList).then((response)=>{
-                console.log(response.result);
-            })
-        })
+        const response =await Promise.all(oneDayInfo.map((oneMeal)=>{
+            return HistoryStorage.getMultipleFoodInfo(oneMeal.foodList);
+        }));
+        return response;
     }
 }
 

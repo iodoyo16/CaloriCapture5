@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     Button, StyleSheet,
     Text, TextInput, TouchableOpacity,SafeAreaView,
@@ -10,9 +10,21 @@ function convertDateFormat(date) {
     return date.toLocaleDateString().replace(/\./g, '').split(' ').map((v,i)=> i > 0 && v.length < 2 ? '0' + v : v).join('-');
 }
 export default function HistoryDetailScreen({route, navigation}){
-    const {selectedDate,myHistoryInfo}=route.params;
-    console.log(myHistoryInfo);
+    const {selectedDate,oneDayInfo}=route.params;
+    const [myDetailHistory,setMyDetailHistory]=useState([]);
     const Today=convertDateFormat(new Date());
+    useEffect(()=>{
+        (async ()=>{
+            await getMyDetailHistory(oneDayInfo);
+        })();
+    }, [myDetailHistory]);
+    const getMyDetailHistory=async(oneDayInfo)=>{
+        const mealsDetailList=await Promise.all(
+            oneDayInfo.map((oneMeal)=>{
+                return HistoryStorage.getMultipleFoodInfo(...oneMeal.foodList);
+            }));
+        console.log("detail",mealsDetailList);
+    }
         return (<SafeAreaView style={styles.Container}>
         <View style = {styles.header}>
             <Text style={styles.TodaysMeal}>
