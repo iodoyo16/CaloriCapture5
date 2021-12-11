@@ -62,7 +62,7 @@ function CameraScreenHome({route, navigation}) {
            //강제로 데이터 생성함.
             const foods =[
                     {
-                    "x": 140, "y": 140, "w": 100, "h": 150, "class_info": [
+                    "x": 40, "y": 100, "w": 100, "h": 150, "class_info": [
                         {"rank": 1, "food_name": "오렌지", "prob": 0.782753},
                         {"rank": 2, "food_name": "한라봉", "prob": 0.08359},
                     ]
