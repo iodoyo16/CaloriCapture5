@@ -41,7 +41,9 @@ export default function HistoryDetailScreen({route, navigation}){
     <ScrollView style={styles.body1} horizontal={true} showsHorizontalScrollIndicator={false}>
         {
             oneDayInfo?.map((oneMeal)=>{
-                return <View style={styles.item1}/>
+                return <View style={styles.item1}>
+                    <Text>{oneMeal.totalKcal}kcal</Text>
+                </View>
             })
         }
     </ScrollView>

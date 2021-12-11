@@ -11,6 +11,7 @@ import HistoryDetailScreen from './detail/HistoryDetailScreen';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {selectedDayBackgroundColor} from "react-native-calendars/src/style";
 import HistoryInfo from "../../model/History"
+import User from "../../model/User"
 
 const HistoryDetailScreenName =ScreenName.HistoryDetailScreenName;
 
@@ -26,16 +27,38 @@ function HistoryScreenHome({route, navigation}){
         });
     }
     useEffect(()=>{
-        (async ()=>{
-            await getMyHistoryInfo();
-        })();
+        getMyHistoryInfo();
     }, [myHistoryInfo]);
-    const getMyInfo=async ()=>{
-        const me= await API.auth.getMe();
-        return JSON.parse(JSON.stringify(me));
+    const getMyHistoryInfo=()=>{
+            const tmpHistoryInfo= User.getMyHistory();
+            console.log(tmpHistoryInfo);
+            const dateOfHistory=Object.keys(tmpHistoryInfo);
+            const marked={};
+            dateOfHistory.map((date)=>{
+                let sum=0;
+                tmpHistoryInfo[`${date}`].map((oneMeal)=>{
+                    sum=sum+oneMeal.totalKcal;
+                });
+                marked[date]={customStyles:
+                        {
+                            container:{
+                                backgroundColor:
+                                    sum >= 2000
+                                        ? 'red'
+                                        : sum>1000
+                                            ? '#70d7c7'
+                                            :'orange'
+                            },
+                            text:{color:'white',}
+                        }
+                };
+            });
+            setMarkedDate(marked);
+            setMyHistoryInfo(tmpHistoryInfo);
     }
+    /*
     const getMyHistoryInfo=async()=>{
-        return getMyInfo().then((myInfo)=>{
+            User.getMyInfo().then((myInfo)=>{
             const tmpHistoryInfo= new HistoryInfo(myInfo.id);
             const dateOfHistory=Object.keys(tmpHistoryInfo.historyList);
             const marked={};
@@ -61,7 +84,7 @@ function HistoryScreenHome({route, navigation}){
             setMarkedDate(marked);
             setMyHistoryInfo(tmpHistoryInfo);
         })
-    }
+    }*/
     return(
     <SafeAreaView style={styles.HistoryContainer}>
         <View style={styles.Header}>
@@ -83,7 +106,7 @@ function HistoryScreenHome({route, navigation}){
                     const date = day.dateString;
                     navigation.navigate(HistoryDetailScreenName, {
                         selectedDate: date,
-                        oneDayInfo: myHistoryInfo.historyList[`${date}`]
+                        oneDayInfo: myHistoryInfo[`${date}`]
                     });
                 }}
                 // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
