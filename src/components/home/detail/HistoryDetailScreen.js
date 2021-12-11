@@ -4,64 +4,67 @@ import {
     Text, TextInput, TouchableOpacity,SafeAreaView,
     View
 } from 'react-native';
-import fs from "react-native-fs";
+import DetailNutritionGraph from "./DetailNutritionGraph"
 import HistoryStorage from "../../../model/HistoryStorage"
-function convertDateFormat(date) {
-    return date.toLocaleDateString().replace(/\./g, '').split(' ').map((v,i)=> i > 0 && v.length < 2 ? '0' + v : v).join('-');
-}
+
+
 export default function HistoryDetailScreen({route, navigation}){
     const {selectedDate,oneDayInfo}=route.params;
     const [myDetailHistory,setMyDetailHistory]=useState([]);
+    const [myMealsTotal,setMyMealsTotal]=useState({});
     const Today=convertDateFormat(new Date());
     useEffect(()=>{
         (async ()=>{
             await getMyDetailHistory(oneDayInfo);
         })();
-    }, [myDetailHistory]);
+    }, [myMealsTotal]);
     const getMyDetailHistory=async(oneDayInfo)=>{
         const mealsDetailList=await Promise.all(
             oneDayInfo.map((oneMeal)=>{
                 return HistoryStorage.getMultipleFoodInfo(...oneMeal.foodList);
             }));
-        console.log("detail",mealsDetailList);
+        const mealsTotalList=await Promise.all(
+            oneDayInfo.map((oneMeal)=>{
+                return HistoryStorage.getTotalFoodNutritions(...oneMeal.foodList);
+            })
+        )
+        setMyMealsTotal(mealsTotalList);
+        setMyDetailHistory(mealsDetailList);
     }
-        return (<SafeAreaView style={styles.Container}>
-        <View style = {styles.header}>
-            <Text style={styles.TodaysMeal}>
-                {
-                    selectedDate==Today
-                    ? 'Today'
-                    : selectedDate
-                }'s MEAL</Text>
-        </View>
-        <View style={styles.body1}>
-            <View style={styles.item3}/>
-            <View style={styles.item2}/>
-            <View style = {styles.item1}/>
-        </View>
-        <View style={styles.body2}>
-            <View style={styles.GraphBox}>
-                <Text style={{
-                    textAlign: 'center',
-
-                }}>GRAPH</Text>
-            </View>
-        </View>
-        <View style={styles.body3}>
-            {
-                selectedDate==Today
-                    ? <TouchableOpacity style={styles.NextMealRecomendationBtn}>
-                        <Text style={styles.NextMealRecomendationTxt}>Next Meal Recomendation</Text>
-                    </TouchableOpacity>
-                    : null
-            }
-            <Button title='goback' onPress={() => {
-                navigation.goBack(null)
-            }}/>
-        </View>
-    </SafeAreaView>
-    )
+    const dateString= selectedDate==Today ? 'Today' : selectedDate;
+    return (<SafeAreaView style={styles.Container}>
+    <View style = {styles.header}>
+        <Text style={styles.TodaysMeal}>
+            {dateString}'s MEAL</Text>
+    </View>
+    <View style={styles.body1}>
+        <View style={styles.item3}/>
+        <View style={styles.item2}/>
+        <View style = {styles.item1}/>
+    </View>
+    <View style={styles.body2}>
+        <DetailNutritionGraph
+            dateString={dateString}
+            myDetailHistory={myDetailHistory}
+            myMealsTotal={myMealsTotal}
+            oneDayInfo={oneDayInfo}/>
+    </View>
+    <View style={styles.body3}>
+        {
+            selectedDate==Today
+                ? <TouchableOpacity style={styles.NextMealRecomendationBtn}>
+                    <Text style={styles.NextMealRecomendationTxt}>Next Meal Recomendation</Text>
+                </TouchableOpacity>
+                : null
+        }
+    </View>
+</SafeAreaView>
+)
 };
+
+function convertDateFormat(date) {
+    return date.toLocaleDateString().replace(/\./g, '').split(' ').map((v,i)=> i > 0 && v.length < 2 ? '0' + v : v).join('-');
+}
 
 const styles = StyleSheet.create({ //Screen View Components - JUN
 
@@ -81,7 +84,6 @@ const styles = StyleSheet.create({ //Screen View Components - JUN
         justifyContent: 'space-around',
 
         backgroundColor: '#ffffff',
-
     },
     body2: { //GRAPH
         flex: 5,
@@ -97,7 +99,6 @@ const styles = StyleSheet.create({ //Screen View Components - JUN
         alignItems: 'center',
         justifyContent: 'center',
     },
-    /*Screen ELEMENTS*/
     TodaysMeal: {
         width: '100%',
         height: '80%',
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({ //Screen View Components - JUN
         borderRadius: 10,
         width: '80%',
         height: '60%',
-        marginBottom:20,
+        marginBottom: 20,
         alignItems: "center",
         //shadow
         shadowOffset: {
@@ -175,19 +176,4 @@ const styles = StyleSheet.create({ //Screen View Components - JUN
         shadowRadius: 9.0,
         elevation: 15,
     },
-    GraphBox: {
-        height: '90%',
-        width: '90%',
-        backgroundColor: '#cccccc',
-        borderRadius: 5,
-        //shadow
-        shadowOffset: {
-            width: 0,
-            height: 7,
-        },
-        shadowOpacity: 0.35,
-        shadowRadius: 9.0,
-        elevation: 15,
-    },
-
 });
