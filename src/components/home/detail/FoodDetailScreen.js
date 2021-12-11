@@ -8,8 +8,6 @@ import {
     Button,
     StyleSheet,
     Modal,
-    Pressable,
-    Animated,
     FlatList,
     TouchableOpacity,
     TextInput
@@ -39,7 +37,7 @@ export default function FoodDetailScreen({route, navigation}){
 
     function changeFoodItem(preFoodName, newFoodName){
 
-        if(selectedFood.includes( newFoodName) == false) {
+        if(selectedFood.includes( newFoodName) === false) {
             const a = [...selectedFood, newFoodName]; //UseState 쓰면 안됨..
             const b = a.filter((food) => { return food !== preFoodName});
             //USE STATE 가 여기서 안됨
