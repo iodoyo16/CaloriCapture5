@@ -58,10 +58,10 @@ function CameraScreenHome({route, navigation}) {
 
             const base64 = data.base64;
             //실제 돌아가야할 함수.
-            //const foods = await getFoodInfos(base64);
+            const foods = await getFoodInfos(base64);
 
            //강제로 데이터 생성함.
-           ///*
+           /*
             const foods =[
                     {
                     "x": 40, "y": 100, "w": 100, "h": 150, "class_info": [
@@ -77,6 +77,7 @@ function CameraScreenHome({route, navigation}) {
             ];
             //*/
             //console.log(foods);
+
             navigation.navigate('FoodDetailScreen', {
                 foods: foods,
                 foodImage: base64,

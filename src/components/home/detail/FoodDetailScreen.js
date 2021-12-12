@@ -24,8 +24,8 @@ export default function FoodDetailScreen({route, navigation}){
     const temp = JSON.parse(obj);
     const [candiList,setCandiList]=useState([]);
 
-    const foodImage = route.params.foodImage; // 사진 추출
-
+    const foodImage = (JSON.stringify(route.params.foodImage)); // 사진 추출
+    console.log("PHOTO PATH ==>:", foodImage)
     const foodTagsPos=temp.map((foodTag)=>{
         const x=foodTag.x;
         const y=foodTag.y;
@@ -90,16 +90,17 @@ export default function FoodDetailScreen({route, navigation}){
                                 />
                             </View>
                         </View>
-                        <View style={styles.modalButton}>
                             <TouchableOpacity
-                                style={[styles.button,]}
+                                style={styles.modalButton}
                                 onPress={() => {
                                     setModalVisible(!modalVisible)
                                 }}
                             >
-                                <Text style={styles.elem}>Sliders</Text>
+                                <Text style={{fontSize: 20, color: '#5048e5', marginLeft: 250,
+
+                                    width: "100%",}}>완료</Text>
                             </TouchableOpacity>
-                    </View>
+
                 </View>
                 </View>
             </Modal>
@@ -126,12 +127,8 @@ export default function FoodDetailScreen({route, navigation}){
                                         <Text style = {styles.elem} >{'\u2022'} {item}</Text>
                                         <Slider
                                             value={1}
-                                            //onValueChange={ }
-                                            maximumValue = {2}
-                                            style={{color: "pink",}}
-                                            //amountList[item].amount}
+                                            maximumValue = {2.5}
                                         />
-                                        <Text>양:{}</Text>
                                     </View>
                                 }
                             />
@@ -147,18 +144,21 @@ export default function FoodDetailScreen({route, navigation}){
                                     /*상영이 함수를 여기서 호출하여 selectedFood를 인자로 넘기고, 우리는 메인 화면으로 이동*/
                                 }}
                             >
-                                <Text style={styles.elem}>DONE</Text>
+                                <Text style={styles.elem}>입력 완료!</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
             </Modal>
-            <View style={{backgroundColor:"tomato", width: "90%", height:"90%", //그냥 배경입니다 이곳에 사진이 옵니다.
+            <View style={{backgroundColor:"grey", width: "90%", height:"80%", //그냥 배경입니다 이곳에 사진이 옵니다.
                  }}>
                 {/* 삽입될 이미지 abosolute로 중앙에 있으면됨*/}
-                 <Image style={{width: 500, height:500, position: 'absolute', resizeMode:'contain'}} source={{uri: foodImage}}/>
+                 <Image style={{width: 500, height:500, position: 'absolute', resizeMode:'contain'}} source={{uri: 'data:image/' + foodImage}}/>
                 {/* 오렌지 안에서 자유롭게 위치하는 태그들*/}
-                <View>
+                <View style={{
+
+
+                }}>
                 {
                     foodTagsPos.map((pos)=> <TouchableOpacity
                             style={[styles.button,]}
@@ -170,8 +170,17 @@ export default function FoodDetailScreen({route, navigation}){
                                 }));
                             }}
                         >
-                            <Text style={{position: "absolute", top: pos.y/2, left:pos.x/2 }}>
-                                x: {pos.x} y: {pos.y} NAME: {pos.foodCandi[0]["food_name"]}
+                            <Text style={{
+                                position: "absolute",
+                                top: pos.y/2, left:pos.x/2,
+                                backgroundColor: "#5048e5",
+                                borderColor:'#fff',
+                                borderRadius: 3,
+                                borderWidth: 1,
+                                fontSize: 15,
+                                color: '#fff',
+                            }}>
+                                {pos.foodCandi[0]["food_name"]}
                                 {/* 추후에 이미지에 맞춰서 x, y값 변환 */}
                             </Text>
                         </TouchableOpacity>
@@ -179,9 +188,9 @@ export default function FoodDetailScreen({route, navigation}){
                 }
                 </View>
             </View>
-            <View style={{alignContent:'center', width:'80%', marginTop: 15, backgroundColor:'#FFF', }}>
+            <View style={{alignContent:'center', width:'80%', marginTop: 15, backgroundColor:'#FFF',borderRadius: 5,  }}>
                 <TouchableOpacity style={{ alignItems: "center",}} onPress={ () => {setAmount(true)}}>
-                    <Text> 완료 </Text>
+                    <Text style={{fontSize: 25, color: '#5048e5'}}> 완료 </Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -247,9 +256,14 @@ const styles = StyleSheet.create({
 
     },
     modalButton:{
-        alignItems: "stretch",
+        alignItems: 'center',
+        justifyContent:'center',
         width: "100%",
-        backgroundColor:"red",
+        backgroundColor: '#fff',
+        borderColor: "#5048e5",
+        borderWidth: 2,
+        borderRadius: 5,
+        height: ' 8%',
     },
 
     button: {
@@ -276,27 +290,21 @@ const styles = StyleSheet.create({
         marginHorizontal: 16,
     },
     inputView: {
-        marginLeft: 28,
-        backgroundColor: '#D2D0FC',
+        marginLeft: 0,
+        backgroundColor: '#fff',
         borderRadius: 5,
-        width: '80%',
+        width: '100%',
         height: 45,
         marginBottom:20,
         alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 4,
-        elevation: 5
+        borderColor: "#5048e5",
+        borderWidth: 2,
     },
     textInput: {
         height: 50,
         flex: 1,
-        marginLeft: 20,
-        padding: 10,
+        marginLeft: 10,
+        color: '5048e5',
     },
     tableElem:{
         padding: 5,
