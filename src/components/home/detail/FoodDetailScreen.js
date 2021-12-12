@@ -24,8 +24,8 @@ export default function FoodDetailScreen({route, navigation}){
     const temp = JSON.parse(obj);
     const [candiList,setCandiList]=useState([]);
 
-    const foodImage = (JSON.stringify(route.params.foodImage)); // 사진 추출
-    console.log("PHOTO PATH ==>:", foodImage)
+    const foodImage = (route.params.foodImage); // 사진 추출
+    console.log("\n\n\n\nPHOTO PATH ==>:", foodImage, "\n\n\n\n\n");
     const foodTagsPos=temp.map((foodTag)=>{
         const x=foodTag.x;
         const y=foodTag.y;
@@ -153,7 +153,7 @@ export default function FoodDetailScreen({route, navigation}){
             <View style={{backgroundColor:"grey", width: "90%", height:"80%", //그냥 배경입니다 이곳에 사진이 옵니다.
                  }}>
                 {/* 삽입될 이미지 abosolute로 중앙에 있으면됨*/}
-                 <Image style={{width: 500, height:500, position: 'absolute', resizeMode:'contain'}} source={{uri: 'data:image/' + foodImage}}/>
+                 <Image style={{width: 500, height:500, position: 'absolute', resizeMode:'contain'}} source={{uri: 'data:image/png;base64,' + foodImage}}/>
                 {/* 오렌지 안에서 자유롭게 위치하는 태그들*/}
                 <View style={{
 
