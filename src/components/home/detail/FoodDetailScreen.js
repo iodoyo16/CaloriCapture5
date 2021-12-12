@@ -10,7 +10,7 @@ import {
     Modal,
     FlatList,
     TouchableOpacity,
-    TextInput,
+    TextInput, Image,
 } from "react-native";
 import Slider from "react-native-sliders";
 import NextFoodScreen from "../NextFoodScreen";
@@ -24,6 +24,8 @@ export default function FoodDetailScreen({route, navigation}){
     const temp = JSON.parse(obj);
     const [candiList,setCandiList]=useState([]);
 
+    const foodImage = route.params.foodImage; // 사진 추출
+
     const foodTagsPos=temp.map((foodTag)=>{
         const x=foodTag.x;
         const y=foodTag.y;
@@ -35,19 +37,7 @@ export default function FoodDetailScreen({route, navigation}){
     const [selectedFood,setSelected]=useState(foodTagsPos.map(foodList => foodList.foodCandi[0]["food_name"]));
     const [amountList, setAmountList] = useState([]);
 
-    function InitAmountList(){
-        let arr = [];
-        for (let i = 0; i<=selectedFood.size; i++){
-            arr.push({
-                food: selectedFood[i],
-                value: 1,
-            })
-        }
-        setAmountList(arr);
-    }
-
     function changeFoodItem(preFoodName, newFoodName){
-
         if(selectedFood.includes( newFoodName) === false) {
             const a = [...selectedFood, newFoodName]; //UseState 쓰면 안됨..
             const b = a.filter((food) => { return food !== preFoodName});
@@ -62,8 +52,6 @@ export default function FoodDetailScreen({route, navigation}){
 
     }
 
-
-    // TODO
     return <SafeAreaView>
         <View style={styles.container}>
             <Modal
@@ -75,7 +63,8 @@ export default function FoodDetailScreen({route, navigation}){
                     setModalVisible(!modalVisible);
                 }}
             >
-                <View style={styles.centeredView }> <View style={styles.modalViewContainer}>
+                <View style={styles.centeredView }>
+                    <View style={styles.modalViewContainer}>
                     <View style={styles.modalTitle}>
                             <Text style = {styles.modalTitleText}>{candiList[0]}</Text>
                     </View>
@@ -111,7 +100,8 @@ export default function FoodDetailScreen({route, navigation}){
                                 <Text style={styles.elem}>Sliders</Text>
                             </TouchableOpacity>
                     </View>
-                </View> </View>
+                </View>
+                </View>
             </Modal>
             <Modal ////Second
                 animationType="slide"
@@ -122,7 +112,8 @@ export default function FoodDetailScreen({route, navigation}){
                     setAmount(!amountUp);
                 }}
             >
-                <View style={styles.centeredView }><View style={styles.modalViewContainer}>
+                <View style={styles.centeredView }>
+                    <View style={styles.modalViewContainer}>
                         <View style={styles.modalTitle}>
                             <Text style = {styles.modalTitleText}>얼마나 드셨나요?</Text>
                         </View>
@@ -133,14 +124,14 @@ export default function FoodDetailScreen({route, navigation}){
                                 renderItem={({item}) =>
                                     <View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
                                         <Text style = {styles.elem} >{'\u2022'} {item}</Text>
-                                        <Slider//슬라이더의 이동값 0~2, 하단에 양 표시 -> value
+                                        <Slider
                                             value={1}
-                                            onValueChange={ console.log("SLide dsdsChange:")}
+                                            //onValueChange={ }
                                             maximumValue = {2}
                                             style={{color: "pink",}}
                                             //amountList[item].amount}
                                         />
-                                        <Text> 양: {} </Text>
+                                        <Text>양:{}</Text>
                                     </View>
                                 }
                             />
@@ -151,7 +142,7 @@ export default function FoodDetailScreen({route, navigation}){
                                 onPress={() => {
                                     setAmount(!amountUp)
                                     navigation.navigate('NextFoodScreen');
-                                    console.log("HERE: ",navigation);
+                                    //console.log("HERE: ",navigation);
                                     //console.log("Parent: ",navigation.getParent(navigation).navigate('NextFoodScreenName'));
                                     /*상영이 함수를 여기서 호출하여 selectedFood를 인자로 넘기고, 우리는 메인 화면으로 이동*/
                                 }}
@@ -159,16 +150,19 @@ export default function FoodDetailScreen({route, navigation}){
                                 <Text style={styles.elem}>DONE</Text>
                             </TouchableOpacity>
                         </View>
-                    </View></View>
+                    </View>
+                </View>
             </Modal>
             <View style={{backgroundColor:"tomato", width: "90%", height:"90%", //그냥 배경입니다 이곳에 사진이 옵니다.
                  }}>
-                {/* 삽입될 이미지 abosolute로 중앙에 있으면됨*/}
+                {/* 삽입될 이미지 abosolute로 중앙에 있으면됨
+                 <Image style={{width: 500, height:500}} source={{uri: 'foodImage'}}/>
+                */}
+
                 {/* 오렌지 안에서 자유롭게 위치하는 태그들*/}
+                <View>
                 {
-                    foodTagsPos.map((pos)=>
-                        <View>{/* 나중에 꾸밀떄 태그가 올것 */}
-                        <TouchableOpacity
+                    foodTagsPos.map((pos)=> <TouchableOpacity
                             style={[styles.button,]}
                             onPress={() => {
                                 setModalVisible(true);
@@ -182,9 +176,10 @@ export default function FoodDetailScreen({route, navigation}){
                                 x: {pos.x} y: {pos.y} NAME: {pos.foodCandi[0]["food_name"]}
                                 {/* 추후에 이미지에 맞춰서 x, y값 변환 */}
                             </Text>
-                        </TouchableOpacity></View>
+                        </TouchableOpacity>
                     )
                 }
+                </View>
             </View>
             <View style={{alignContent:'center', width:'80%', marginTop: 15, backgroundColor:'#FFF', }}>
                 <TouchableOpacity style={{ alignItems: "center",}} onPress={ () => {setAmount(true)}}>
