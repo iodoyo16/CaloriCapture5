@@ -15,6 +15,7 @@ import Config from "../../api/Config";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FoodDetailScreen from "./detail/FoodDetailScreen";
 import img from "../Food_Photo/meal3.jpeg";
+import NextFoodScreen from "./NextFoodScreen";
 
 
 const styles = StyleSheet.create({
@@ -55,16 +56,24 @@ function CameraScreenHome({route, navigation}) {
             const options = { quality: 0.5, base64: true, uri: "file://../Food_Photo/meal3.jpeg" };
             const data = await this.camera.takePictureAsync(options);
 
-
-
-
             const base64 = data.base64;
 
 
-            //console.log("AADONE", base64);
-            const foods = await getFoodInfos(base64);
-
-            console.log(foods);
+           //강제로 데이터 생성함.
+            const foods =[
+                    {
+                    "x": 40, "y": 100, "w": 100, "h": 150, "class_info": [
+                        {"rank": 1, "food_name": "오렌지", "prob": 0.782753},
+                        {"rank": 2, "food_name": "한라봉", "prob": 0.08359},
+                    ]
+                    }, {
+                    "x": 250, "y": 650, "w": 120, "h": 200, "class_info": [
+                        {"rank": 1, "food_name": "귤", "prob": 67.8932},
+                        {"rank": 2, "food_name": "레몬", "prob": 12.3923},
+                        ]
+                    }
+            ];
+            //console.log(foods);
             navigation.navigate('FoodDetailScreen', {
                 foods: foods,
                 otherParam: 'anything you want here',
@@ -119,6 +128,7 @@ export default function CameraScreen({route, navigation}) {
     return <Stack.Navigator>
         <Stack.Screen name={'CameraScreenHome'} component={CameraScreenHome}/>
         <Stack.Screen name={'FoodDetailScreen'} component={FoodDetailScreen}/>
+        <Stack.Screen name={'NextFoodScreen'} component={NextFoodScreen}/>
     </Stack.Navigator>
 
 }
