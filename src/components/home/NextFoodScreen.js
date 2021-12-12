@@ -1,5 +1,5 @@
-import {Text, View, Button, StyleSheet, TouchableOpacity, Image} from "react-native";
-import React from 'react';
+import {Text, View, Button, StyleSheet, TouchableOpacity, Image, SafeAreaView, ScrollView} from "react-native";
+import React, {useEffect, useState} from 'react';
 import HistoryInfo from '../../model/History'
 //import "src/components/Food_Photo"
 
@@ -7,10 +7,14 @@ import HistoryInfo from '../../model/History'
 import Config from "../../api/Config";
 
 import {Grid, LineChart, XAxis, YAxis} from "react-native-svg-charts";
+import HistoryStorage from "../../model/HistoryStorage";
+import DetailNutritionGraph from "./detail/DetailNutritionGraph";
+import User from "../../model/User";
 
 //Home SCREEN
 export default function NextFoodScreen({route, navigation}) {
     //DATA EXAMPLE
+    /*
     const data = [ 30, 60, 90 ]
     const meal= ["아침", "점심", "저녁"]
     const data_kcal = [ 20, 50, 70 ]
@@ -69,8 +73,60 @@ export default function NextFoodScreen({route, navigation}) {
             </TouchableOpacity>
         </View>
     </View>
+*/
+    const oneDayInfo=HistoryStorage.getHistory(User.getMyId())[`${HistoryInfo.convertDateFormat(new Date())}`];
+    const [myDetailHistory, setMyDetailHistory] = useState([]);
+    const [myMealsTotal, setMyMealsTotal] = useState({});
+    const Today = HistoryInfo.convertDateFormat(new Date());
+    useEffect(() => {
+        (async () => {
+            await getMyDetailHistory(oneDayInfo);
+        })();
+    }, [myMealsTotal]);
+    const getMyDetailHistory = async (oneDayInfo) => {
+        const mealsDetailList = await Promise.all(
+            oneDayInfo.map((oneMeal) => {
+                return HistoryStorage.getMultipleFoodInfo(...oneMeal.foodList);
+            }));
+        const mealsTotalList = await Promise.all(
+            oneDayInfo.map((oneMeal) => {
+                return HistoryStorage.getTotalFoodNutritions(...oneMeal.foodList);
+            })
+        )
+        setMyMealsTotal(mealsTotalList);
+        setMyDetailHistory(mealsDetailList);
+    }
+    return (<SafeAreaView style={styles.Container}>
+            <View style={styles.header}>
+                <Text style={styles.TodaysMeal}>
+                    Today's MEAL</Text>
+            </View>
+            <ScrollView style={styles.body1} horizontal={true} showsHorizontalScrollIndicator={false}>
+                {
+                    oneDayInfo?.map((oneMeal) => {
+                        return <View style={styles.item1}>
+                            <Text>{oneMeal.totalKcal}kcal</Text>
+                        </View>
+                    })
+                }
+            </ScrollView>
+            <View style={styles.body2} showsVerticalScrollIndicator={true}>
+                <ScrollView style={{flexDirection: "column"}}>
+                    <DetailNutritionGraph
+                        dateString={dateString}
+                        myDetailHistory={myDetailHistory}
+                        myMealsTotal={myMealsTotal}
+                        oneDayInfo={oneDayInfo}/>
+                </ScrollView>
+            </View>
+            <View style={styles.body3}>
+                <TouchableOpacity style={styles.NextMealRecomendationBtn}>
+                    <Text style={styles.NextMealRecomendationTxt}>Next Meal Recomendation</Text>
+                </TouchableOpacity>
+            </View>
+        </SafeAreaView>
+    )
 }
-
 const styles = StyleSheet.create({ //Screen View Components - JUN
 
     Container: { //container
