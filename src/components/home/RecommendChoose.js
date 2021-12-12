@@ -145,7 +145,6 @@ function RecommendChooseSide({route,navigation}){
 }
 function SelectDoneScreen({route,navigation}){
     const {selectedMain,selectedSide}=route?.params;
-    console.log(selectedMain,selectedSide);
     return (<SafeAreaView style={styles.Container}>
         <View style = {[styles.header,{flex:1}]}>
             <Text style={styles.Title}>
@@ -169,7 +168,12 @@ function SelectDoneScreen({route,navigation}){
             </View>
         </View>
         <View style={[styles.footer,{flex:1}]}>
-
+            <TouchableOpacity
+                style={styles.SideRecommendationBtn}
+                onPress={()=>{ HistoryStorage.addTodayHistory(User.myId,[selectedMain["식품명"],selectedSide["식품명"]],[1,1])}}
+            >
+                <Text style={styles.SideRecommendationTxt}>Push!</Text>
+            </TouchableOpacity>
         </View>
     </SafeAreaView>)
 }

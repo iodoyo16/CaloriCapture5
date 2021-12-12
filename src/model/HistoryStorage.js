@@ -26,15 +26,18 @@ class HistoryStorage{
         return historyList;
     }
     static addTodayHistory=async(userId,foodList,amountList)=>{
+        const dateString=new Date().toLocaleDateString().replace(/\./g, '').split(' ').map((v,i)=> i > 0 && v.length < 2 ? '0' + v : v).join('-');
+        console.log(dateString);
         const dateObj=new Date();
-        const dateString=HistoryInfo.convertDateFormat(dateObj);
-        const nowTime=dateObj.getTime();
-        const totalKcal=await HistoryStorage.getMultipleFoodInfo(...foodList);
+        const nowTime=dateObj.getHours();
+        console.log("id!",userId);
+        console.log("time:",nowTime);
+        const totalNutrition=await HistoryStorage.getTotalFoodNutritions(...foodList);
+        const totalKcal=totalNutrition["칼로리"];
         const newMeal={
-            "aAMRxEJVuXdUQwPSkxU2ME":{
                 [dateString]: [{"foodList":{foodList},"amountList":{amountList},"totalKcal":{totalKcal},"time":{nowTime}}],
-            }
         }
+        console.log("newmeal:",newMeal);
         this.#history[`${userId}`].push(newMeal);
     }
     static getSingleFoodInfo=async (foodName)=>{
