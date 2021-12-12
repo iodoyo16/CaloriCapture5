@@ -155,10 +155,8 @@ export default function FoodDetailScreen({route, navigation}){
             </Modal>
             <View style={{backgroundColor:"tomato", width: "90%", height:"90%", //그냥 배경입니다 이곳에 사진이 옵니다.
                  }}>
-                {/* 삽입될 이미지 abosolute로 중앙에 있으면됨
-                 <Image style={{width: 500, height:500}} source={{uri: 'foodImage'}}/>
-                */}
-
+                {/* 삽입될 이미지 abosolute로 중앙에 있으면됨*/}
+                 <Image style={{width: 500, height:500, position: 'absolute', resizeMode:'contain'}} source={{uri: foodImage}}/>
                 {/* 오렌지 안에서 자유롭게 위치하는 태그들*/}
                 <View>
                 {

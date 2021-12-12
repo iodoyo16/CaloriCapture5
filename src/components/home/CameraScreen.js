@@ -79,10 +79,9 @@ function CameraScreenHome({route, navigation}) {
             //console.log(foods);
             navigation.navigate('FoodDetailScreen', {
                 foods: foods,
-                //foodImage: base64,
+                foodImage: base64,
                 otherParam: 'anything you want here',
             });
-
         }
     };
 
