@@ -57,7 +57,8 @@ function CameraScreenHome({route, navigation}) {
             const data = await this.camera.takePictureAsync(options);
 
             const base64 = data.base64;
-
+            //실제 돌아가야할 함수.
+            //const foods = await getFoodInfos(base64);
 
            //강제로 데이터 생성함.
             const foods =[
