@@ -1,5 +1,6 @@
 const fs =require("react-native-fs");
 import API from "../api/API";
+import HistoryInfo from "../model/History"
 class HistoryStorage{
     static #history={
         "aAMRxEJVuXdUQwPSkxU2ME": {
@@ -24,8 +25,17 @@ class HistoryStorage{
         }
         return historyList;
     }
-    static addHistory(userId,oneMeal){
-        this.#history[`${userId}`].append(oneMeal);
+    static addTodayHistory=async(userId,foodList,amountList)=>{
+        const dateObj=new Date();
+        const dateString=HistoryInfo.convertDateFormat(dateObj);
+        const nowTime=dateObj.getTime();
+        const totalKcal=await HistoryStorage.getMultipleFoodInfo(...foodList);
+        const newMeal={
+            "aAMRxEJVuXdUQwPSkxU2ME":{
+                [dateString]: [{"foodList":{foodList},"amountList":{amountList},"totalKcal":{totalKcal},"time":{nowTime}}],
+            }
+        }
+        this.#history[`${userId}`].push(newMeal);
     }
     static getSingleFoodInfo=async (foodName)=>{
         const response=await API.logic.runFunction("DB_and_reco_API",

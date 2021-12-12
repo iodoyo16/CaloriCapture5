@@ -52,7 +52,7 @@ function RecommendChooseMain({route,navigation}){
         (async ()=>{
             await getMyMainReco();
         })();
-    }, []);
+    }, [myMainReco]);
 
     return (<SafeAreaView style={styles.Container}>
         <View style = {styles.header}>
@@ -109,7 +109,7 @@ function RecommendChooseSide({route,navigation}){
         (async ()=>{
             await getMySideReco();
         })();
-    }, []);
+    }, [mySideReco]);
 
     return (<SafeAreaView style={styles.Container}>
         <View style = {styles.header}>
