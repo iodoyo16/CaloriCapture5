@@ -1,6 +1,12 @@
 import React,{useEffect,useState} from "react";
+import {SafeAreaView, ScrollView} from "react-native";
 
+function RecommendChooseHome(){
+    return (<SafeAreaView>
+        <ScrollView>
 
-export default function RecommendChoose(){
-
+        </ScrollView>
+    </SafeAreaView>)
 }
+
+export default

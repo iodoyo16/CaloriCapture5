@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import DetailNutritionGraph from "./DetailNutritionGraph"
 import HistoryStorage from "../../../model/HistoryStorage"
+import HistoryInfo from "../../../model/History"
 import {G, Line, Rect} from "react-native-svg";
 
 
@@ -13,7 +14,7 @@ export default function HistoryDetailScreen({route, navigation}){
     const {selectedDate,oneDayInfo}=route.params;
     const [myDetailHistory,setMyDetailHistory]=useState([]);
     const [myMealsTotal,setMyMealsTotal]=useState({});
-    const Today=convertDateFormat(new Date());
+    const Today=HistoryInfo.convertDateFormat(new Date());
     useEffect(()=>{
         (async ()=>{
             await getMyDetailHistory(oneDayInfo);
@@ -69,9 +70,6 @@ export default function HistoryDetailScreen({route, navigation}){
 )
 };
 
-function convertDateFormat(date) {
-    return date.toLocaleDateString().replace(/\./g, '').split(' ').map((v,i)=> i > 0 && v.length < 2 ? '0' + v : v).join('-');
-}
 
 const styles = StyleSheet.create({ //Screen View Components - JUN
 

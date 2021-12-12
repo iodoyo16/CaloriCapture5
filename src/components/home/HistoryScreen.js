@@ -26,12 +26,13 @@ function HistoryScreenHome({route, navigation}){
             setLoggedIn(false);
         });
     }
+
     useEffect(()=>{
         getMyHistoryInfo();
     }, [myHistoryInfo]);
+
     const getMyHistoryInfo=()=>{
             const tmpHistoryInfo= User.getMyHistory();
-            console.log(tmpHistoryInfo);
             const dateOfHistory=Object.keys(tmpHistoryInfo);
             const marked={};
             dateOfHistory.map((date)=>{
@@ -56,35 +57,6 @@ function HistoryScreenHome({route, navigation}){
             setMarkedDate(marked);
             setMyHistoryInfo(tmpHistoryInfo);
     }
-    /*
-    const getMyHistoryInfo=async()=>{
-            User.getMyInfo().then((myInfo)=>{
-            const tmpHistoryInfo= new HistoryInfo(myInfo.id);
-            const dateOfHistory=Object.keys(tmpHistoryInfo.historyList);
-            const marked={};
-            dateOfHistory.map((date)=>{
-                let sum=0;
-                tmpHistoryInfo.historyList[`${date}`].map((oneMeal)=>{
-                    sum=sum+oneMeal.totalKcal;
-                });
-                marked[date]={customStyles:
-                        {
-                            container:{
-                                backgroundColor:
-                                sum >= 2000
-                                ? 'red'
-                                : sum>1000
-                                ? '#70d7c7'
-                                    :'orange'
-                            },
-                            text:{color:'white',}
-                        }
-                };
-            });
-            setMarkedDate(marked);
-            setMyHistoryInfo(tmpHistoryInfo);
-        })
-    }*/
     return(
     <SafeAreaView style={styles.HistoryContainer}>
         <View style={styles.Header}>
@@ -113,13 +85,8 @@ function HistoryScreenHome({route, navigation}){
                 monthFormat={'yyyy MM'}
                 // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
                 firstDay={1}
-                // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-                onPressArrowLeft={substractMonth => substractMonth()}
-                // Handler which gets executed when press arrow icon right. It receive a callback can go next month
-                onPressArrowRight={addMonth => addMonth()}
                 // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
                 disableAllTouchEventsForDisabledDays={true}
-                enableSwipeMonths={true}
                 // Max amount of months allowed to scroll to the past. Default = 50
                 pastScrollRange={12}
                 // Max amount of months allowed to scroll to the future. Default = 50
