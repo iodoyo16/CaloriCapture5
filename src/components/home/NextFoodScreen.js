@@ -1,8 +1,10 @@
 import {Text, View, Button, StyleSheet, TouchableOpacity, Image, SafeAreaView, ScrollView} from "react-native";
 import React, {useEffect, useState} from 'react';
 import HistoryInfo from '../../model/History'
+import ScreenNames from "../ScreenNames";
 //import "src/components/Food_Photo"
-
+const RecommendChooseScreenName=ScreenNames.RecommendChooseScreenName;
+const NextFoodScreenName=ScreenNames.NextFoodScreenName;
 
 import Config from "../../api/Config";
 
@@ -10,9 +12,12 @@ import {Grid, LineChart, XAxis, YAxis} from "react-native-svg-charts";
 import HistoryStorage from "../../model/HistoryStorage";
 import DetailNutritionGraph from "./detail/DetailNutritionGraph";
 import User from "../../model/User";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import HistoryDetailScreen from "./detail/HistoryDetailScreen";
+import RecommendChooseScreen from "./RecommendChoose";
 
 //Home SCREEN
-export default function NextFoodScreen({route, navigation}) {
+function NextFoodHomeScreen({route, navigation}) {
     //DATA EXAMPLE
     const oneDayInfo=HistoryStorage.getHistory(User.getMyId())[`${HistoryInfo.convertDateFormat(new Date())}`];
     const [myDetailHistory, setMyDetailHistory] = useState([]);
@@ -64,7 +69,10 @@ export default function NextFoodScreen({route, navigation}) {
                 </ScrollView>
             </View>
             <View style={styles.body3}>
-                <TouchableOpacity style={styles.NextMealRecomendationBtn}>
+                <TouchableOpacity style={styles.NextMealRecomendationBtn}
+                    onPress={()=>{
+                        navigation.navigate(RecommendChooseScreenName);
+                    }}>
                     <Text style={styles.NextMealRecomendationTxt}>Next Meal Recomendation</Text>
                 </TouchableOpacity>
             </View>
@@ -72,6 +80,13 @@ export default function NextFoodScreen({route, navigation}) {
     )
 }
 
+export default function NextFoodScreen({route, navigation}) {
+    const Stack = createNativeStackNavigator();
+    return(<Stack.Navigator>
+        <Stack.Screen name ='오늘 식단기록' component={NextFoodHomeScreen} />
+        <Stack.Screen name={RecommendChooseScreenName} component={RecommendChooseScreen}/>
+    </Stack.Navigator>);
+}
 const styles = StyleSheet.create({ //Screen View Components - JUN
 
     Container: { //container
