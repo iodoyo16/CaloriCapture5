@@ -43,9 +43,13 @@ export default function NextFoodScreen({route, navigation}) {
             </View>
             <ScrollView style={styles.body1} horizontal={true} showsHorizontalScrollIndicator={false}>
                 {
-                    oneDayInfo?.map((oneMeal) => {
+                    oneDayInfo?.map((oneMeal)=>{
                         return <View style={styles.item1}>
-                            <Text>{oneMeal.totalKcal}kcal</Text>
+                            {
+                                oneMeal.foodList.map((food)=>{
+                                    return <Text>{food}, </Text>;
+                                })
+                            }
                         </View>
                     })
                 }
@@ -73,18 +77,21 @@ const styles = StyleSheet.create({ //Screen View Components - JUN
     Container: { //container
         flex: 1,
         backgroundColor: '#fff',
+        margin: 10,
     },
     /*Structure: header - body 1, 2 - footer*/
     header: { //TODAY's MEAL
         flex: 1,
         justifyContent: 'center',
         backgroundColor: '#ffffff',
+        margin : 10,
     },
     body1: { //PREVIOUS MEAL PHOTO
         flex: 2,
         flexDirection: 'row',
         //justifyContent: 'space-around',
         paddingBottom:10,
+        paddingLeft:10,
         backgroundColor: '#ffffff',
         //backgroundColor:'red'
     },
@@ -148,6 +155,5 @@ const styles = StyleSheet.create({ //Screen View Components - JUN
         },
         shadowOpacity: 0.35,
         shadowRadius: 9.0,
-        elevation: 15,
     },
 });
